@@ -1,0 +1,216 @@
+/* Reset e estrutura básica */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navbar e footer fixos */
+.navbar, .footer {
+    flex-shrink: 0;
+}
+
+/* Permitir que o conteúdo principal ocupe o espaço restante */
+body > *:not(.navbar):not(.footer) {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #003519; /* Verde escuro */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .nav-link,
+.navbar .nav-link.active {
+    color: white !important;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active:hover {
+    color: #008844 !important; /* Verde mais claro no hover */
+}
+
+.navbar-brand img {
+    height: 75px;
+    width: auto;
+    display: block;
+    padding: 5px 15px;
+    background: none;
+    box-shadow: none;
+}
+
+/* Botão Orçamento */
+.btn-success {
+    background-color: #008844; /* Verde padrão para sucesso */
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #00aa55;
+}
+
+/* Formulário de Contato */
+/* Formulário de Contato */
+form {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form .form-label {
+    font-weight: bold;
+}
+
+form .form-control,
+form .form-select,
+form textarea {
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+form button {
+    background-color: #008844;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #00aa55;
+}
+
+/* Deixar campos lado a lado (menos a mensagem) */
+@media (min-width: 768px) {
+    form .col-md-6 {
+        display: inline-block;
+        width: 48%;
+        margin-right: 2%;
+        vertical-align: top;
+    }
+
+    form .col-md-6:nth-child(even) {
+        margin-right: 0;
+    }
+
+    form .col-md-12 {
+        width: 100%;
+        display: block;
+        clear: both;
+    }
+}
+
+/* Responsividade para celular */
+@media (max-width: 767px) {
+    form .col-md-6,
+    form .col-md-12 {
+        width: 100%;
+        display: block;
+        margin-right: 0;
+    }
+}
+
+/* Feedback de validação */
+form .invalid-feedback {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+
+/* WhatsApp Flutuante */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    font-size: 32px;
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    background-color: #003519;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    margin-top: auto;
+}
+
+.footer img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.footer .redes a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.footer .redes a:hover {
+    color: #008844;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 60px;
+    }
+
+    form .btn-success {
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-float i {
+        font-size: 28px;
+    }
+}

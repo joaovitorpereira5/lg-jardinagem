@@ -1,0 +1,216 @@
+/* Reset e estrutura básica */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif; /* Garante que a fonte Montserrat seja usada */
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navbar e footer fixos */
+.navbar, .footer {
+    flex-shrink: 0; /* Garante que navbar e footer não encolham */
+}
+
+/* Conteúdo principal para ocupar o espaço restante */
+body > *:not(.navbar):not(.footer) {
+    flex: 1; /* Faz o conteúdo entre navbar e footer ocupar o espaço disponível */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #003519; /* Verde escuro */
+    margin-bottom: 30px; /* Espaço abaixo da navbar */
+}
+
+.navbar-brand img {
+    height: 75px; /* Ajuste a altura da logo */
+    width: auto;
+    display: block;
+    padding: 5px 15px;
+    background: none;
+    box-shadow: none;
+}
+
+/* Links da Navbar */
+.navbar .nav-link {
+    color: white !important; /* Força a cor branca para links da navbar */
+    text-decoration: none; /* Garante que não tenha sublinhado */
+    transition: color 0.3s; /* Transição suave no hover */
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active { /* Adicionado .active para destacar a página atual */
+    color: #008844 !important; /* Verde mais claro no hover e para o link ativo */
+}
+
+/* Botão de orçamento (Navbar) */
+.btn-success {
+    background-color: #008844; /* Verde padrão para sucesso */
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #00aa55; /* Um tom um pouco mais claro no hover */
+}
+
+/* Estilos para o conteúdo principal (main-content) */
+.main-content {
+    padding: 20px; /* Padding geral para o conteúdo principal */
+    max-width: 900px; /* Largura máxima para o conteúdo de texto */
+    margin: 0 auto; /* Centraliza o bloco de conteúdo */
+}
+
+/* Estilos para TÍTULOS (H1) */
+.about-me-section h1, .main-title { 
+    /* Ajustado para um tamanho que deve ser mais próximo do display-9 do index.html */
+    font-size: 3rem; /* Tentei usar 3rem como um 'display-5' do Bootstrap. Se ainda não for igual, me avise! */
+    font-weight: 700; /* Negrito */
+    color: #008844; /* Cor verde para os títulos */
+    margin-bottom: 1.5rem; /* Espaço abaixo do título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Estilos para Parágrafos */
+.main-paragraph { /* Estilo para o primeiro parágrafo "lead" */
+    font-size: 1.25rem; /* Tamanho maior, equivalente ao "lead" do Bootstrap */
+    font-weight: 300; /* Fonte mais leve para o lead, como no Bootstrap */
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #333; /* Cor do texto */
+}
+
+/* Para garantir que os parágrafos sem classe 'lead' tenham o font-weight e font-size padrão */
+/* Isso cobre tanto .conteudo-secundario-p quanto os <p> dentro de .about-me-section */
+.conteudo-secundario-p, .about-me-section p { 
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 1rem; /* Tamanho de fonte padrão para parágrafos (16px) */
+    font-weight: 400; /* Garantir que o peso da fonte seja normal (não fino demais) */
+    color: #333; /* Cor do texto */
+}
+
+
+/* SEÇÕES DE CONTEÚDO */
+.about-me-section {
+    margin-bottom: 40px; /* Espaço abaixo da seção "Sobre mim" */
+    padding: 0 15px; /* Pequeno padding para o texto não encostar nas bordas em mobile */
+}
+
+.company-info-section { /* Nova seção "Sobre a Empresa" */
+    margin-bottom: 40px; /* Espaço abaixo da seção "Sobre a Empresa" */
+    padding: 0 15px;
+}
+
+
+/* WhatsApp flutuante */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    font-size: 32px;
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    background-color: #003519;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    margin-top: auto;
+}
+
+.footer img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.footer .redes a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.footer .redes a:hover {
+    color: #008844;
+}
+
+.footer .link-secondary {
+    color: #cccccc !important;
+    text-decoration: none;
+}
+
+.footer .link-secondary:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 60px;
+    }
+    .about-me-section h1, .main-title {
+        font-size: 2rem; /* Ajuste para títulos em telas menores */
+    }
+    .conteudo-secundario-p, .about-me-section p {
+        font-size: 0.95rem; /* Levemente menor para parágrafos em telas menores */
+    }
+    .main-paragraph {
+        font-size: 1.1rem; /* Ajuste para o lead em telas menores */
+    }
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .whatsapp-float i {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content {
+        padding: 15px;
+    }
+    .about-me-section h1, .main-title {
+        font-size: 1.8rem;
+    }
+    .main-paragraph {
+        font-size: 1rem; /* Ajuste para o lead em telas muito pequenas */
+    }
+}
