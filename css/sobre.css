@@ -6,7 +6,7 @@ html, body {
     flex-direction: column;
     background-color: white;
     color: black;
-    font-family: 'Montserrat', sans-serif; /* Garante que a fonte Montserrat seja usada */
+    font-family: 'Montserrat', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -18,22 +18,22 @@ img {
 
 /* Navbar e footer fixos */
 .navbar, .footer {
-    flex-shrink: 0; /* Garante que navbar e footer não encolham */
+    flex-shrink: 0;
 }
 
 /* Conteúdo principal para ocupar o espaço restante */
 body > *:not(.navbar):not(.footer) {
-    flex: 1; /* Faz o conteúdo entre navbar e footer ocupar o espaço disponível */
+    flex: 1;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #003519; /* Verde escuro */
-    margin-bottom: 30px; /* Espaço abaixo da navbar */
+    background-color: #003519;
+    margin-bottom: 30px;
 }
 
 .navbar-brand img {
-    height: 75px; /* Ajuste a altura da logo */
+    height: 75px;
     width: auto;
     display: block;
     padding: 5px 15px;
@@ -41,80 +41,63 @@ body > *:not(.navbar):not(.footer) {
     box-shadow: none;
 }
 
-/* Links da Navbar */
 .navbar .nav-link {
-    color: white !important; /* Força a cor branca para links da navbar */
-    text-decoration: none; /* Garante que não tenha sublinhado */
-    transition: color 0.3s; /* Transição suave no hover */
+    color: white !important;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link.active { /* Adicionado .active para destacar a página atual */
-    color: #008844 !important; /* Verde mais claro no hover e para o link ativo */
+.navbar .nav-link.active {
+    color: #008844 !important;
 }
 
-/* Botão de orçamento (Navbar) */
 .btn-success {
-    background-color: #008844; /* Verde padrão para sucesso */
+    background-color: #008844;
     border: none;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 
 .btn-success:hover {
-    background-color: #00aa55; /* Um tom um pouco mais claro no hover */
+    background-color: #00aa55;
 }
 
-/* Estilos para o conteúdo principal (main-content) */
+/* Estilo do conteúdo principal */
 .main-content {
-    padding: 20px; /* Padding geral para o conteúdo principal */
-    max-width: 900px; /* Largura máxima para o conteúdo de texto */
-    margin: 0 auto; /* Centraliza o bloco de conteúdo */
+    padding: 32px 16px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-/* Estilos para TÍTULOS (H1) */
-.about-me-section h1, .main-title { 
-    /* Ajustado para um tamanho que deve ser mais próximo do display-9 do index.html */
-    font-size: 3rem; /* Tentei usar 3rem como um 'display-5' do Bootstrap. Se ainda não for igual, me avise! */
-    font-weight: 700; /* Negrito */
-    color: #008844; /* Cor verde para os títulos */
-    margin-bottom: 1.5rem; /* Espaço abaixo do título */
-    text-align: center; /* Centraliza o título */
+/* Títulos das seções */
+.about-me-section h1,
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #008844;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-/* Estilos para Parágrafos */
-.main-paragraph { /* Estilo para o primeiro parágrafo "lead" */
-    font-size: 1.25rem; /* Tamanho maior, equivalente ao "lead" do Bootstrap */
-    font-weight: 300; /* Fonte mais leve para o lead, como no Bootstrap */
-    line-height: 1.7;
-    margin-bottom: 20px;
-    text-align: justify;
-    color: #333; /* Cor do texto */
+/* Estilo unificado para todos os parágrafos dentro das seções */
+.company-info-section p,
+.about-me-section p {
+    font-size: 1.25rem !important;
+    font-weight: 300 !important;
+    line-height: 1.7 !important;
+    margin-bottom: 20px !important;
+    text-align: justify !important;
+    color: #333 !important;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
-/* Para garantir que os parágrafos sem classe 'lead' tenham o font-weight e font-size padrão */
-/* Isso cobre tanto .conteudo-secundario-p quanto os <p> dentro de .about-me-section */
-.conteudo-secundario-p, .about-me-section p { 
-    line-height: 1.7;
-    margin-bottom: 20px;
-    text-align: justify;
-    font-size: 1rem; /* Tamanho de fonte padrão para parágrafos (16px) */
-    font-weight: 400; /* Garantir que o peso da fonte seja normal (não fino demais) */
-    color: #333; /* Cor do texto */
-}
-
-
-/* SEÇÕES DE CONTEÚDO */
+/* Espaçamento entre as seções */
+.company-info-section,
 .about-me-section {
-    margin-bottom: 40px; /* Espaço abaixo da seção "Sobre mim" */
-    padding: 0 15px; /* Pequeno padding para o texto não encostar nas bordas em mobile */
-}
-
-.company-info-section { /* Nova seção "Sobre a Empresa" */
-    margin-bottom: 40px; /* Espaço abaixo da seção "Sobre a Empresa" */
+    margin-bottom: 48px;
     padding: 0 15px;
 }
-
 
 /* WhatsApp flutuante */
 .whatsapp-float {
@@ -123,8 +106,8 @@ body > *:not(.navbar):not(.footer) {
     height: 60px;
     bottom: 20px;
     right: 20px;
-    background-color: #25d366; /* Cor oficial do WhatsApp */
-    color: #25d366; /* Cor do ícone */
+    background-color: #25d366;
+    color: #25d366;
     border-radius: 50%;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
@@ -145,41 +128,40 @@ body > *:not(.navbar):not(.footer) {
 
 /* Footer */
 .footer {
-    background-color: #003519; /* Cor do rodapé, igual à navbar */
-    padding: 5px 0; /* Mais padding para um visual mais limpo */
+    background-color: #003519;
+    padding: 5px 0;
     text-align: center;
     color: white;
-    margin-top: auto; /* Garante que o rodapé fique no final da página */
+    margin-top: auto;
 }
 
 .footer img {
     height: 60px;
-    margin-bottom: 10px; /* Mais espaço entre logo e texto */
+    margin-bottom: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .footer .redes a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 20px; /* Tamanho dos ícones de redes sociais */
+    font-size: 20px;
     transition: color 0.3s;
 }
 
 .footer .redes a:hover {
-    color: #008844; /* Cor de hover para ícones */
+    color: #008844;
 }
 
-/* Media Queries para responsividade (ajustes menores para telas diferentes) */
+/* Responsividade */
 @media (max-width: 768px) {
     .navbar-brand img {
-        height: 60px; /* Logo menor em telas menores */
+        height: 60px;
     }
     .conteudo-principal p {
-        font-size: 16px; /* Fonte menor em telas pequenas */
+        font-size: 16px;
     }
     .whatsapp-float {
         width: 50px;
