@@ -48,64 +48,67 @@
     
 
     <!-- Formulário de Contato -->
-    <!-- Formulário de Contato -->
-<section class="container my-5">
-    <h1 class="text-center mb-4">Entre em Contato</h1>
-    <form class="row g-3 needs-validation" novalidate action="processa_form.php" method="POST">
-        <!-- Nome Completo -->
-        <div class="col-md-6">
-            <label for="nome" class="form-label">Nome Completo</label>
-            <input type="text" class="form-control" id="nome" name="nome" required>
-            <div class="invalid-feedback">Por favor, informe seu nome.</div>
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">Entre em Contato</h1>
+            </div>
         </div>
+        <form class="row g-3 needs-validation" novalidate action="processa_form.php" method="POST">
+            <!-- Nome Completo -->
+            <div class="col-md-6">
+                <label for="nome" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+                <div class="invalid-feedback">Por favor, informe seu nome.</div>
+            </div>
 
-        <!-- E-mail -->
-        <div class="col-md-6">
-            <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-            <div class="invalid-feedback">Informe um e-mail válido.</div>
-        </div>
+            <!-- E-mail -->
+            <div class="col-md-6">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">Informe um e-mail válido.</div>
+            </div>
 
-        <!-- Telefone -->
-        <div class="col-md-6">
-            <label for="telefone" class="form-label">Telefone</label>
-            <input type="tel" class="form-control" id="telefone" name="telefone" required>
-            <div class="invalid-feedback">Informe seu telefone para contato.</div>
-        </div>
+            <!-- Telefone -->
+            <div class="col-md-6">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" name="telefone" required>
+                <div class="invalid-feedback">Informe seu telefone para contato.</div>
+            </div>
 
-        <!-- Cidade -->
-        <div class="col-md-6">
-            <label for="cidade" class="form-label">Cidade</label>
-            <input type="text" class="form-control" id="cidade" name="cidade" required>
-            <div class="invalid-feedback">Informe sua cidade.</div>
-        </div>
+            <!-- Cidade -->
+            <div class="col-md-6">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="cidade" required>
+                <div class="invalid-feedback">Informe sua cidade.</div>
+            </div>
 
-        <!-- Tipo de Serviço -->
-        <div class="col-md-6">
-            <label for="servico" class="form-label">Tipo de Serviço</label>
-            <select class="form-select" id="servico" name="servico" required>
-                <option selected disabled value="">Escolha uma opção...</option>
-                <option>Manutenção de Jardim</option>
-                <option>Paisagismo</option>
-                <option>Poda de Árvores</option>
-                <option>Outros</option>
-            </select>
-            <div class="invalid-feedback">Selecione o tipo de serviço desejado.</div>
-        </div>
+            <!-- Tipo de Serviço -->
+            <div class="col-md-6">
+                <label for="servico" class="form-label">Tipo de Serviço</label>
+                <select class="form-select" id="servico" name="servico" required>
+                    <option selected disabled value="">Escolha uma opção...</option>
+                    <option>Manutenção de Jardim</option>
+                    <option>Paisagismo</option>
+                    <option>Poda de Árvores</option>
+                    <option>Outros</option>
+                </select>
+                <div class="invalid-feedback">Selecione o tipo de serviço desejado.</div>
+            </div>
 
-        <!-- Mensagem -->
-        <div class="col-md-12">
-            <label for="mensagem" class="form-label">Mensagem</label>
-            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
-            <div class="invalid-feedback">Escreva sua mensagem.</div>
-        </div>
+            <!-- Mensagem -->
+            <div class="col-md-12">
+                <label for="mensagem" class="form-label">Mensagem</label>
+                <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
+                <div class="invalid-feedback">Escreva sua mensagem.</div>
+            </div>
 
-        <!-- Botão -->
-        <div class="col-12 text-center">
-            <button class="btn btn-success btn-lg" type="submit">Enviar Mensagem</button>
-        </div>
-    </form>
-</section>
+            <!-- Botão -->
+            <div class="col-12 text-center">
+                <button class="btn btn-success btn-lg" type="submit">Enviar Mensagem</button>
+            </div>
+        </form>
+    </section>
 
 
     <!-- WhatsApp Flutuante -->
@@ -117,12 +120,12 @@
     <footer class="footer">
         <div class="container text-center">
             <img src="imagens/logo.png" class="img-fluid mb-2" alt="LG Jardinagem" />
-            <p>&copy; 2025 LG Jardinagem. Todos os direitos reservados.</p>
             <div class="redes">
                 <a href="https://www.facebook.com/jardins.encontrocomapazinterior" title="Facebook"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/oseias_pereira_vieira" title="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/5544998543350" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
+            <p>&copy; 2025 LG Jardinagem. Todos os direitos reservados.</p>
         </div>
     </footer>
 

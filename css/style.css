@@ -59,6 +59,7 @@ body > *:not(.navbar):not(.footer) {
     box-shadow: none;
 }
 
+
 /* Botão de orçamento */
 .btn-success {
     background-color: #008844; /* Verde padrão para sucesso */
@@ -133,8 +134,10 @@ section.container {
     background-color: #003519; /* Cor do rodapé, igual à navbar */
     padding: 5px 0; /* Mais padding para um visual mais limpo */
     text-align: center;
+    font-size: small;
     color: white;
     margin-top: auto; /* Garante que o rodapé fique no final da página */
+
 }
 
 .footer img {

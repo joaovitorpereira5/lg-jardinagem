@@ -127,32 +127,55 @@ body > *:not(.navbar):not(.footer) {
 }
 
 /* Footer */
+/* Footer */
 .footer {
-    background-color: #003519;
-    padding: 5px 0;
+    background-color: #003519; /* Cor do rodapé, igual à navbar */
+    padding: 5px 0; /* Mais padding para um visual mais limpo */
     text-align: center;
+    font-size: 12px;
     color: white;
-    margin-top: auto;
+    margin-top: auto; /* Garante que o rodapé fique no final da página */
+
 }
 
 .footer img {
     height: 60px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Mais espaço entre logo e texto */
     display: block;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 .footer .redes a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 20px;
+    font-size: 20px; /* Tamanho dos ícones de redes sociais */
     transition: color 0.3s;
 }
 
 .footer .redes a:hover {
-    color: #008844;
+    color: #008844; /* Cor de hover para ícones */
+}
+
+/* Media Queries para responsividade (ajustes menores para telas diferentes) */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 60px; /* Logo menor em telas menores */
+    }
+    .conteudo-principal p {
+        font-size: 16px; /* Fonte menor em telas pequenas */
+    }
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .whatsapp-float i {
+        font-size: 28px;
+    }
 }
 
 /* Responsividade */
