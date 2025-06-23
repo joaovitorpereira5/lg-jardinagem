@@ -122,7 +122,7 @@ section.container {
     bottom: 20px;
     right: 20px;
     background-color: #25d366; /* Cor oficial do WhatsApp */
-    color: #fff; /* Cor do ícone */
+    color: #25d366; /* Cor do ícone */
     border-radius: 50%;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
@@ -144,7 +144,7 @@ section.container {
 /* Footer */
 .footer {
     background-color: #003519; /* Cor do rodapé, igual à navbar */
-    padding: 15px 0; /* Mais padding para um visual mais limpo */
+    padding: 5px 0; /* Mais padding para um visual mais limpo */
     text-align: center;
     color: white;
     margin-top: auto; /* Garante que o rodapé fique no final da página */
@@ -153,13 +153,17 @@ section.container {
 .footer img {
     height: 60px;
     margin-bottom: 10px; /* Mais espaço entre logo e texto */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .footer .redes a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 24px; /* Tamanho dos ícones de redes sociais */
+    font-size: 20px; /* Tamanho dos ícones de redes sociais */
     transition: color 0.3s;
 }
 
