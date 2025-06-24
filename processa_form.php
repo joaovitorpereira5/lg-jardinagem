@@ -38,7 +38,7 @@ function renderHeader() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/contato.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <link rel="shortcut icon" href="imagens/icone.png" />
     </head>
     <body>
