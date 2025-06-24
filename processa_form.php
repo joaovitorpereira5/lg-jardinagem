@@ -115,7 +115,7 @@ try {
     $mail->Port = 587;
 
     $mail->setFrom('joaovitorpereiraquinto58@gmail.com', 'LG Jardinagem');
-    $mail->addAddress('joaovitorpereiraquinto58fotos@gmail.com');
+    $mail->addAddress('escofiemichael@gmail.com');
 
     $mail->isHTML(true);
     $mail->Subject = 'Novo contato via site - LG Jardinagem';
