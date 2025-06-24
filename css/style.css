@@ -30,8 +30,7 @@ body > *:not(.navbar):not(.footer) {
 .navbar {
     background-color: #003519; /* Verde escuro */
     margin-top: 0px;
-    margin-bottom: 30px; /* Espaço abaixo da navbar */
- 
+
 }
 
 .navbar a {
@@ -86,7 +85,6 @@ section.container {
     color: #333;
 }
 
-
 /* Ajustes para o conteúdo principal (onde fica o texto sobre a empresa) */
 
 .conteudo-principal p {
@@ -96,21 +94,6 @@ section.container {
     font-size: 18px; /* Tamanho da fonte mais agradável para leitura */
 ;
 }
-
-/* Cards de Serviço (se ativados) 
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.card-title {
-    color: #003519;
-    font-weight: bold;
-}
-.card-text {
-    font-size: 16px;
-    color: #555;
-}*/
 
 /* WhatsApp flutuante */
 .whatsapp-float {
