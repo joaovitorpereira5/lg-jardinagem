@@ -47,6 +47,7 @@ if (empty($mensagem)) {
     $erros[] = "Escreva sua mensagem.";
 }
 
+// Se tiver erros, mostra página de erro
 if (count($erros) > 0) {
     ?>
     <!DOCTYPE html>
@@ -78,7 +79,7 @@ if (count($erros) > 0) {
                 <div class="redes">
                     <a href="https://www.facebook.com/jardins.encontrocomapazinterior" title="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/oseias_pereira_vieira" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" onclick="abrirWhatsApp()" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/5544998543350" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
                 <p>&copy; 2025 LG Jardinagem. Todos os direitos reservados.</p>
             </div>
@@ -89,12 +90,12 @@ if (count($erros) > 0) {
     exit;
 }
 
-// Envio para o dono
+// Envio para o dono do site
 $corpo = "
 Novo contato do site LG Jardinagem:
 
 Nome: $nome
-E-mail: $email
+E-mail do cliente: $email
 Telefone: $telefone
 CEP: $cep
 Endereço: $endereco
@@ -103,7 +104,7 @@ Tipo de Serviço: $servico
 Mensagem: $mensagem
 ";
 
-$headersDono = "From: $email";
+$headersDono = "From: LG Jardinagem <joaovitorpereiraquinto58@gmail.com>";
 mail($destino, "Novo contato via site - LG Jardinagem", $corpo, $headersDono);
 
 // Confirmação para o cliente
@@ -129,10 +130,10 @@ Atenciosamente,
 LG Jardinagem
 ";
 
-$headersCliente = "From: $destino";
+$headersCliente = "From: LG Jardinagem <joaovitorpereiraquinto58@gmail.com>";
 mail($email, "Confirmação de contato - LG Jardinagem", $corpoCliente, $headersCliente);
 
-// Resposta ao navegador
+// Página de sucesso
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -161,6 +162,10 @@ mail($email, "Confirmação de contato - LG Jardinagem", $corpoCliente, $headers
             <div class="redes">
                 <a href="https://www.facebook.com/jardins.encontrocomapazinterior" title="Facebook"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/oseias_pereira_vieira" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" onclick="abrirWhatsApp()" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/5544998543350" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p>&copy; 2025 LG Jardinagem. Todos os direitos
+            <p>&copy; 2025 LG Jardinagem. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
