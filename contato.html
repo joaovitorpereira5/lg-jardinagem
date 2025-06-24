@@ -40,7 +40,7 @@
                     <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="contato.html">Entre em Contato</a></li>
                 </ul>
-                <a href="https://wa.me/5544998543350" class="btn btn-success">Faça seu Orçamento</a>
+                <a href="#" onclick="abrirWhatsApp()"class="btn btn-success">Faça seu Orçamento</a>
             </div>
         </div>
     </nav>
@@ -76,6 +76,18 @@
                 <div class="invalid-feedback">Informe seu telefone para contato.</div>
             </div>
 
+            <!-- Adicione este bloco antes do campo Cidade -->
+<div class="col-md-6">
+    <label for="cep" class="form-label">CEP</label>
+    <input type="text" class="form-control" id="cep" name="cep" maxlength="9" required>
+    <div class="invalid-feedback">Informe seu CEP.</div>
+</div>
+<div class="col-md-6">
+    <label for="endereco" class="form-label">Endereço</label>
+    <input type="text" class="form-control" id="endereco" name="endereco" required>
+    <div class="invalid-feedback">Informe seu endereço.</div>
+</div>
+
             <!-- Cidade -->
             <div class="col-md-6">
                 <label for="cidade" class="form-label">Cidade</label>
@@ -90,7 +102,6 @@
                     <option selected disabled value="">Escolha uma opção...</option>
                     <option>Manutenção de Jardim</option>
                     <option>Paisagismo</option>
-                    <option>Poda de Árvores</option>
                     <option>Outros</option>
                 </select>
                 <div class="invalid-feedback">Selecione o tipo de serviço desejado.</div>
@@ -112,9 +123,10 @@
 
 
     <!-- WhatsApp Flutuante -->
-    <a href="https://wa.me/5544998543350" class="whatsapp-float" target="_blank" title="Fale conosco">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="#" onclick="abrirWhatsApp()" class="whatsapp-float" title="Fale conosco">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -123,7 +135,7 @@
             <div class="redes">
                 <a href="https://www.facebook.com/jardins.encontrocomapazinterior" title="Facebook"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/oseias_pereira_vieira" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5544998543350" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" onclick="abrirWhatsApp()" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p>&copy; 2025 LG Jardinagem. Todos os direitos reservados.</p>
         </div>
@@ -144,6 +156,33 @@
             }, false);
         });
     })();
+
+const mensagensWhatsApp = [
+    "Olá! Quero informações sobre os serviços da LG Jardinagem."
+];
+
+function abrirWhatsApp() {
+    const numero = "5544998543350";
+    const mensagem = mensagensWhatsApp[0];
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    window.open(link, '_blank');
+}
+
+document.getElementById('cep').addEventListener('blur', function() {
+    const cep = this.value.replace(/\D/g, '');
+    if (cep.length === 8) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.erro) {
+                    document.getElementById('endereco').value = data.logradouro + (data.bairro ? ', ' + data.bairro : '') + (data.localidade ? ' - ' + data.localidade : '');
+                } else {
+                    document.getElementById('endereco').value = '';
+                }
+            });
+    }
+});
+
     </script>
 
 </body>
