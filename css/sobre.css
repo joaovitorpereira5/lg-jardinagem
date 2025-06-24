@@ -71,14 +71,8 @@ body > *:not(.navbar):not(.footer) {
 }
 
 /* Títulos das seções */
-.about-me-section h1,
-.main-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #008844;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
+
+
 
 /* Estilo unificado para todos os parágrafos dentro das seções */
 .company-info-section p,
@@ -177,22 +171,16 @@ body > *:not(.navbar):not(.footer) {
         font-size: 28px;
     }
 }
-
-/* Responsividade */
+ 
 @media (max-width: 768px) {
-    .navbar-brand img {
-        height: 60px;
-    }
-    .conteudo-principal p {
+    .main-content p,
+    .main-paragraph {
         font-size: 16px;
     }
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
-    }
-    .whatsapp-float i {
-        font-size: 28px;
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1.5rem;
     }
 }

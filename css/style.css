@@ -76,6 +76,16 @@ section.container {
     margin-top: 0px;
 }
 
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-text {
+    text-align: center;
+    color: #333;
+}
+
 
 /* Ajustes para o conteúdo principal (onde fica o texto sobre a empresa) */
 
