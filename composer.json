@@ -1,0 +1,17 @@
+{
+    "name": "emanu/lg-jardinagem",
+    "autoload": {
+        "psr-4": {
+            "Emanu\\LgJardinagem\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Emanuelymanu",
+            "email": "emanuelibueno7@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
