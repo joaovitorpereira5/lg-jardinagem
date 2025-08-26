@@ -30,7 +30,6 @@ body > *:not(.navbar):not(.footer) {
 .navbar {
     background-color: #003519; /* Verde escuro */
     margin-top: 0px;
-
 }
 
 .navbar a {
@@ -58,7 +57,6 @@ body > *:not(.navbar):not(.footer) {
     box-shadow: none;
 }
 
-
 /* Botão de orçamento */
 .btn-success {
     background-color: #008844; /* Verde padrão para sucesso */
@@ -71,10 +69,7 @@ body > *:not(.navbar):not(.footer) {
     background-color: #00aa55; /* Um tom um pouco mais claro no hover */
 }
 
-section.container {
-    margin-top: 0px;
-}
-
+/* Card imagem */
 .card-img-top {
     height: 200px;
     object-fit: cover;
@@ -86,13 +81,11 @@ section.container {
 }
 
 /* Ajustes para o conteúdo principal (onde fica o texto sobre a empresa) */
-
 .conteudo-principal p {
     line-height: 1.7; /* Aumenta um pouco mais o espaçamento entre as linhas para melhor legibilidade */
     margin-bottom: 20px;
     text-align: left; /* Alinha o texto à esquerda para evitar buracos no justificado */
     font-size: 18px; /* Tamanho da fonte mais agradável para leitura */
-;
 }
 
 /* WhatsApp flutuante */
@@ -130,7 +123,6 @@ section.container {
     font-size: small;
     color: white;
     margin-top: auto; /* Garante que o rodapé fique no final da página */
-
 }
 
 .footer img {
@@ -139,7 +131,6 @@ section.container {
     display: block;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .footer .redes a {
@@ -152,6 +143,101 @@ section.container {
 
 .footer .redes a:hover {
     color: #008844; /* Cor de hover para ícones */
+}
+
+/* Formulário de Contato */
+form {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form .form-label {
+    font-weight: bold;
+}
+
+form .form-control,
+form .form-select,
+form textarea {
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+form button {
+    background-color: #008844;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #00aa55;
+}
+
+/* Deixar campos lado a lado (menos a mensagem) */
+@media (min-width: 768px) {
+    form .col-md-6 {
+        display: inline-block;
+        width: 48%;
+        margin-right: 2%;
+        vertical-align: top;
+    }
+
+    form .col-md-6:nth-child(even) {
+        margin-right: 0;
+    }
+
+    form .col-md-12 {
+        width: 100%;
+        display: block;
+        clear: both;
+    }
+}
+
+/* Responsividade para celular */
+@media (max-width: 767px) {
+    form .col-md-6,
+    form .col-md-12 {
+        width: 100%;
+        display: block;
+        margin-right: 0;
+    }
+}
+
+/* Feedback de validação */
+form .invalid-feedback {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Estilo do conteúdo principal sobre */
+.main-content {
+    padding: 32px 16px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Parágrafos das seções sobre */
+.company-info-section p,
+.about-me-section p {
+    font-size: 1.25rem !important;
+    font-weight: 300 !important;
+    line-height: 1.7 !important;
+    margin-bottom: 20px !important;
+    text-align: justify !important;
+    color: #333 !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Espaçamento entre as seções sobre */
+.company-info-section,
+.about-me-section {
+    margin-bottom: 48px;
+    padding: 0 15px;
 }
 
 /* Media Queries para responsividade (ajustes menores para telas diferentes) */
@@ -170,5 +256,50 @@ section.container {
     }
     .whatsapp-float i {
         font-size: 28px;
+    }
+    .main-content p,
+    .main-paragraph {
+        font-size: 16px;
+    }
+    .main-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Remove padding lateral do container apenas para o formulário de contato em telas grandes */
+section.container.my-5 {
+    padding-left: 130px !important;
+    padding-right: 0 !important;
+}
+
+/* Remova o padding do h1 para não desalinhar no desktop */
+section.container.my-5 h1 {
+    padding-left: 0 !important;
+    padding-right: 95px !important;
+    text-align: center !important;
+}
+
+/* Responsividade para o formulário */
+@media (max-width: 991.98px) {
+    section.container.my-5 {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    section.container.my-5 {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    form {
+        max-width: 100%;
+        padding: 8px;
+    }
+    form .col-md-6,
+    form .col-md-12 {
+        width: 100% !important;
+        display: block;
+        margin-right: 0 !important;
     }
 }
