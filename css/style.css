@@ -1,72 +1,26 @@
-/* Reset e estrutura básica */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    color: black;
-    font-family: 'Montserrat', sans-serif;
-    scroll-behavior: smooth;
-}
+/* Não sobrescreva .container, .row, .col diretamente */
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Navbar e footer fixos */
-.navbar, .footer {
-    flex-shrink: 0;
-}
-
-/* Conteúdo principal para ocupar o espaço restante */
-body > *:not(.navbar):not(.footer) {
-    flex: 1;
-}
-
-/* Navbar */
+/* Navbar personalizada */
 .navbar {
-    background-color: #003519; /* Verde escuro */
-    margin-top: 0px;
+    background-color: #003519 !important;
 }
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-}
-
 .navbar .nav-link,
 .navbar .nav-link.active {
-    color: white !important; /* Força a cor branca para links da navbar */
-    transition: color 0.3s;
+    color: #fff !important;
+}
+.navbar .nav-link:hover {
+    color: #008844 !important;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link.active:hover {
-    color: #008844 !important; /* Verde mais claro no hover */
-}
-
-.navbar-brand img {
-    height: 75px; /* Ajuste a altura da logo */
-    width: auto;
-    display: block;
-    padding: 5px 15px;
-    background: none;
-    box-shadow: none;
-}
-
-/* Botão de orçamento */
+/* Botão personalizado */
 .btn-success {
-    background-color: #008844; /* Verde padrão para sucesso */
-    border: none;
+    background-color: #008844 !important;
+    border: none !important;
     font-weight: bold;
     transition: background-color 0.3s;
 }
-
 .btn-success:hover {
-    background-color: #00aa55; /* Um tom um pouco mais claro no hover */
+    background-color: #00aa55 !important;
 }
 
 /* Card imagem */
@@ -75,17 +29,37 @@ body > *:not(.navbar):not(.footer) {
     object-fit: cover;
 }
 
+/* Card texto */
 .card-text {
     text-align: center;
     color: #333;
 }
 
-/* Ajustes para o conteúdo principal (onde fica o texto sobre a empresa) */
-.conteudo-principal p {
-    line-height: 1.7; /* Aumenta um pouco mais o espaçamento entre as linhas para melhor legibilidade */
-    margin-bottom: 20px;
-    text-align: left; /* Alinha o texto à esquerda para evitar buracos no justificado */
-    font-size: 18px; /* Tamanho da fonte mais agradável para leitura */
+/* Footer */
+.footer {
+    background-color: #003519 !important;
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+    font-size: small;
+    margin-top: auto;
+}
+.footer img {
+    height: 60px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer .redes a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+.footer .redes a:hover {
+    color: #008844;
 }
 
 /* WhatsApp flutuante */
@@ -95,158 +69,50 @@ body > *:not(.navbar):not(.footer) {
     height: 60px;
     bottom: 20px;
     right: 20px;
-    background-color: #25d366; /* Cor oficial do WhatsApp */
-    color: #25d366; /* Cor do ícone */
+    background-color: #25d366;
     border-radius: 50%;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s;
 }
-
 .whatsapp-float:hover {
     transform: scale(1.1);
 }
-
 .whatsapp-float i {
     font-size: 32px;
     color: #fff;
 }
 
-/* Footer */
-.footer {
-    background-color: #003519; /* Cor do rodapé, igual à navbar */
-    padding: 5px 0; /* Mais padding para um visual mais limpo */
-    text-align: center;
-    font-size: small;
-    color: white;
-    margin-top: auto; /* Garante que o rodapé fique no final da página */
-}
-
-.footer img {
-    height: 60px;
-    margin-bottom: 10px; /* Mais espaço entre logo e texto */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.footer .redes a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 20px; /* Tamanho dos ícones de redes sociais */
-    transition: color 0.3s;
-}
-
-.footer .redes a:hover {
-    color: #008844; /* Cor de hover para ícones */
-}
-
-/* Formulário de Contato */
+/* Formulário */
 form {
-    max-width: 900px;
+    max-width: 400px;
     margin: 30px auto;
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
-form .form-label {
-    font-weight: bold;
-}
-
-form .form-control,
-form .form-select,
-form textarea {
+form .form-control {
     border-radius: 5px;
     box-shadow: none;
 }
-
 form button {
-    background-color: #008844;
-    border: none;
+    background-color: #008844 !important;
+    border: none !important;
     font-weight: bold;
     transition: background-color 0.3s;
 }
-
 form button:hover {
-    background-color: #00aa55;
+    background-color: #00aa55 !important;
 }
 
-/* Deixar campos lado a lado (menos a mensagem) */
-@media (min-width: 768px) {
-    form .col-md-6 {
-        display: inline-block;
-        width: 48%;
-        margin-right: 2%;
-        vertical-align: top;
-    }
-
-    form .col-md-6:nth-child(even) {
-        margin-right: 0;
-    }
-
-    form .col-md-12 {
-        width: 100%;
-        display: block;
-        clear: both;
-    }
-}
-
-/* Responsividade para celular */
-@media (max-width: 767px) {
-    form .col-md-6,
-    form .col-md-12 {
-        width: 100%;
-        display: block;
-        margin-right: 0;
-    }
-}
-
-/* Feedback de validação */
-form .invalid-feedback {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 5px;
-}
-
-/* Estilo do conteúdo principal sobre */
-.main-content {
-    padding: 32px 16px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* Parágrafos das seções sobre */
-.company-info-section p,
-.about-me-section p {
-    font-size: 1.25rem !important;
-    font-weight: 300 !important;
-    line-height: 1.7 !important;
-    margin-bottom: 20px !important;
-    text-align: justify !important;
-    color: #333 !important;
-    font-family: 'Montserrat', sans-serif !important;
-}
-
-/* Espaçamento entre as seções sobre */
-.company-info-section,
-.about-me-section {
-    margin-bottom: 48px;
-    padding: 0 15px;
-}
-
-/* Media Queries para responsividade (ajustes menores para telas diferentes) */
+/* Responsividade */
 @media (max-width: 768px) {
     .navbar-brand img {
-        height: 60px; /* Logo menor em telas menores */
-    }
-    .conteudo-principal p {
-        font-size: 16px; /* Fonte menor em telas pequenas */
+        height: 60px;
     }
     .whatsapp-float {
         width: 50px;
@@ -256,50 +122,5 @@ form .invalid-feedback {
     }
     .whatsapp-float i {
         font-size: 28px;
-    }
-    .main-content p,
-    .main-paragraph {
-        font-size: 16px;
-    }
-    .main-title {
-        font-size: 1.5rem;
-    }
-}
-
-/* Remove padding lateral do container apenas para o formulário de contato em telas grandes */
-section.container.my-5 {
-    padding-left: 130px !important;
-    padding-right: 0 !important;
-}
-
-/* Remova o padding do h1 para não desalinhar no desktop */
-section.container.my-5 h1 {
-    padding-left: 0 !important;
-    padding-right: 95px !important;
-    text-align: center !important;
-}
-
-/* Responsividade para o formulário */
-@media (max-width: 991.98px) {
-    section.container.my-5 {
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-    }
-}
-
-@media (max-width: 575.98px) {
-    section.container.my-5 {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-    }
-    form {
-        max-width: 100%;
-        padding: 8px;
-    }
-    form .col-md-6,
-    form .col-md-12 {
-        width: 100% !important;
-        display: block;
-        margin-right: 0 !important;
     }
 }

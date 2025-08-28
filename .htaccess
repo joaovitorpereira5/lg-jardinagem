@@ -1,0 +1,3 @@
+ErrorDocument 404 /projeto-tads/erro.php
+ErrorDocument 403 /projeto-tads/erro.php
+ErrorDocument 500 /projeto-tads/erro.php

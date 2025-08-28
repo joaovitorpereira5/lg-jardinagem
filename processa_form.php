@@ -28,77 +28,23 @@ if (empty($cidade)) $erros[] = "Cidade obrigatória.";
 if (empty($servico)) $erros[] = "Tipo de serviço obrigatório.";
 if (empty($mensagem)) $erros[] = "Mensagem obrigatória.";
 
-function renderHeader() {
-    ?>
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>LG Jardinagem - Contato</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="shortcut icon" href="imagens/icone.png" />
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="imagens/logo.png" class="img-fluid" alt="LG Jardinagem" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Página Inicial</a></li>
-                    <li class="nav-item"><a class="nav-link" href="serviços.html">Serviços</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="contato.html">Entre em Contato</a></li>
-                </ul>
-                <a href="#" onclick="abrirWhatsApp()" class="btn btn-success">Faça seu Orçamento</a>
-            </div>
-        </div>
-    </nav>
-    <main class="container my-5">
-    <?php
-}
-
-function renderFooter() {
-    ?>
-    </main>
-    <footer class="footer">
-        <div class="container text-center">
-            <img src="imagens/logo.png" class="img-fluid mb-2" alt="LG Jardinagem" />
-            <div class="redes">
-                <a href="https://www.facebook.com/jardins.encontrocomapazinterior" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/oseias_pereira_vieira" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" onclick="abrirWhatsApp()" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p>&copy; 2025 LG Jardinagem. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-    function abrirWhatsApp() {
-        const numero = "5544998543350";
-        const mensagem = "Olá! Quero informações sobre os serviços da LG Jardinagem.";
-        const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-        window.open(link, '_blank');
-    }
-    </script>
-    </body>
-    </html>
-    <?php
-}
-
 if (count($erros) > 0) {
-    renderHeader();
-    echo '<div class="alert alert-danger"><h4>Erros encontrados:</h4><ul>';
-    foreach ($erros as $erro) echo "<li>$erro</li>";
-    echo '</ul><a href="contato.html" class="btn btn-secondary mt-3">Voltar</a></div>';
-    renderFooter();
+    $mainContent = '
+    <div class="d-flex justify-content-center align-items-center" style="min-height:60vh;">
+        <div class="card shadow-sm p-4" style="max-width:500px;">
+            <div class="alert alert-danger mb-3 text-center">
+                <h4 class="mb-3">Erros encontrados:</h4>
+                <ul class="text-start">';
+    foreach ($erros as $erro) $mainContent .= "<li>$erro</li>";
+    $mainContent .= '
+                </ul>
+            </div>
+            <div class="text-center">
+                <a href="contato.php" class="btn btn-secondary mt-2">Voltar</a>
+            </div>
+        </div>
+    </div>';
+    include 'includes/layout.php';
     exit;
 }
 
@@ -109,8 +55,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'joaovitorpereiraquinto58@gmail.com';  
-    $mail->Password = 'alei bogi felm mxac';    
+    $mail->Username = 'joaovitorpereiraquinto58@gmail.com';
+    $mail->Password = 'alei bogi felm mxac';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
@@ -133,13 +79,28 @@ try {
 
     $mail->send();
 
-    renderHeader();
-    echo '<div class="alert alert-success text-center"><h3>Mensagem enviada com sucesso!</h3><a href="index.html" class="btn btn-success mt-3">Voltar ao site</a></div>';
-    renderFooter();
+    $mainContent = '
+    <div class="d-flex justify-content-center align-items-center" style="min-height:60vh;">
+        <div class="card shadow-sm p-4 text-center" style="max-width:500px;">
+            <div class="alert alert-success mb-3">
+                <h3 class="mb-3">Mensagem enviada com sucesso!</h3>
+            </div>
+            <a href="index.php" class="btn btn-success mt-2">Voltar ao site</a>
+        </div>
+    </div>';
+    include 'includes/layout.php';
 
 } catch (Exception $e) {
-    renderHeader();
-    echo '<div class="alert alert-danger text-center"><h3>Erro ao enviar a mensagem:</h3><p>' . $mail->ErrorInfo . '</p><a href="contato.html" class="btn btn-secondary mt-3">Voltar</a></div>';
-    renderFooter();
+    $mainContent = '
+    <div class="d-flex justify-content-center align-items-center" style="min-height:60vh;">
+        <div class="card shadow-sm p-4 text-center" style="max-width:500px;">
+            <div class="alert alert-danger mb-3">
+                <h3 class="mb-3">Erro ao enviar a mensagem:</h3>
+                <p>' . $mail->ErrorInfo . '</p>
+            </div>
+            <a href="contato.php" class="btn btn-secondary mt-2">Voltar</a>
+        </div>
+    </div>';
+    include 'includes/layout.php';
 }
 ?>
