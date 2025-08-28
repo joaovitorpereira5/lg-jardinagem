@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="imagens/icone.png" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
         <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
