@@ -101,6 +101,6 @@ try {
             <a href="contato.php" class="btn btn-secondary mt-2">Voltar</a>
         </div>
     </div>';
-    include 'includes/layout.php';
+    include './includes/layout.php';
 }
 ?>

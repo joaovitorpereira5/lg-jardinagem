@@ -4,10 +4,12 @@
 .navbar {
     background-color: #003519 !important;
 }
+
 .navbar .nav-link,
 .navbar .nav-link.active {
     color: #fff !important;
 }
+
 .navbar .nav-link:hover {
     color: #008844 !important;
 }
@@ -19,9 +21,12 @@
     font-weight: bold;
     transition: background-color 0.3s;
 }
+
 .btn-success:hover {
     background-color: #00aa55 !important;
 }
+
+
 
 /* Card imagem */
 .card-img-top {
@@ -44,6 +49,7 @@
     font-size: small;
     margin-top: auto;
 }
+
 .footer img {
     height: 60px;
     margin-bottom: 10px;
@@ -51,6 +57,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .footer .redes a {
     color: #fff;
     text-decoration: none;
@@ -58,6 +65,7 @@
     font-size: 20px;
     transition: color 0.3s;
 }
+
 .footer .redes a:hover {
     color: #008844;
 }
@@ -71,16 +79,18 @@
     right: 20px;
     background-color: #25d366;
     border-radius: 50%;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s;
 }
+
 .whatsapp-float:hover {
     transform: scale(1.1);
 }
+
 .whatsapp-float i {
     font-size: 32px;
     color: #fff;
@@ -93,34 +103,54 @@ form {
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 form .form-control {
     border-radius: 5px;
     box-shadow: none;
 }
+
 form button {
     background-color: #008844 !important;
     border: none !important;
     font-weight: bold;
     transition: background-color 0.3s;
 }
+
 form button:hover {
     background-color: #00aa55 !important;
 }
 
+.img-logo {
+    width: 11% !important;
+    height: 11% !important;
+}
+
+.btn-left {
+    float: right !important;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
-    .navbar-brand img {
-        height: 60px;
-    }
+    /* .navbar-brand img {height: 60px;}*/
+
     .whatsapp-float {
         width: 50px;
         height: 50px;
         bottom: 15px;
         right: 15px;
     }
+
     .whatsapp-float i {
         font-size: 28px;
     }
+
+    .img-logo {
+        width: 25% !important;
+        height: 25% !important;
+
+    }
 }
+
+@media (min-width: 576px) {}

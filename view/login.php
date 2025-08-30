@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //require 'config/db.php';
 
 $erro = '';
@@ -43,5 +44,5 @@ $mainContent = '
 </div>
 ';
 
-include 'includes/layout.php';
+include './includes/layout.php';
 ?>

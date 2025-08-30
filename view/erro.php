@@ -19,5 +19,5 @@ $mainContent = '
 }
 </style>
 ';
-include 'includes/layout.php';
+include './includes/layout.php';
 ?>

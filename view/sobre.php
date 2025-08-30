@@ -13,5 +13,5 @@ $mainContent = '
     </section>
 </div>
 ';
-include 'includes/layout.php';
+include './includes/layout.php';
 ?>
