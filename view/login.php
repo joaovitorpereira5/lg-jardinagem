@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-//require 'config/db.php';
+require_once __DIR__ . '/../src/Model/LoginModel.php';
+$login = new LoginModel();
 
 $erro = '';
 
@@ -9,14 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    // Consulta na tabela clientes usando o e-mail
-    $stmt = $pdo->prepare("SELECT * FROM clientes WHERE email = ?");
-    $stmt->execute([$email]);
-    $cliente = $stmt->fetch();
+    $login->logar($email, $senha);
+    if ($_SESSION['cliente_logado'] == true) {
 
-    if ($cliente && password_verify($senha, $cliente['senha_hash'])) {
-        $_SESSION['cliente_logado'] = true;
-        $_SESSION['cliente_id'] = $cliente['id'];
+
         header('Location: cliente/dashboard.php');
         exit;
     } else {
@@ -31,8 +28,8 @@ $mainContent = '
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="mb-4 text-success fw-bold text-center">Login do Cliente</h2>
-                    '.(!empty($erro) ? '<div class="alert alert-danger text-center">'.$erro.'</div>' : '').'
-                    <form method="POST">
+                    ' . (!empty($erro) ? '<div class="alert alert-danger text-center">' . $erro . '</div>' : '') . '
+                    <form method="POST" >
                         <input type="email" name="email" class="form-control mb-3" placeholder="E-mail" required>
                         <input type="password" name="senha" class="form-control mb-3" placeholder="Senha" required>
                         <button type="submit" class="btn btn-success w-100">Entrar</button>

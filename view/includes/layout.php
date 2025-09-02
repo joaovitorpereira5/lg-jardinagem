@@ -17,9 +17,9 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid text-left">
 
-            <a class="navbar-brand img-logo" href=" ./index.php">
+            <a class="navbar-brand img-logo" href=" ./home.php">
 
-                <img src="./imagens/logo.png" class="img-fluid  alt=" LG Jardinagem" />
+                <img src="./imagens/logo.png" class="img-fluid" alt="LG Jardinagem"/>
             </a>
             <button class="navbar-toggler" style="background-color:#fff" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -28,7 +28,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.php">Página
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="./home.php">Página
                             Inicial</a></li>
                     <li class="nav-item"><a class="nav-link" href="./serviços.php">Serviços</a></li>
                     <li class="nav-item"><a class="nav-link" href="./sobre.php">Sobre</a></li>
