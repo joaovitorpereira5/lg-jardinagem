@@ -14,6 +14,11 @@
     color: #008844 !important;
 }
 
+.img-logo img {
+    max-height: 60px; /* controla a altura da logo */
+    width: auto;      /* mantém a proporção */
+}
+
 /* Botão personalizado */
 .btn-success {
     background-color: #008844 !important;
@@ -26,7 +31,13 @@
     background-color: #00aa55 !important;
 }
 
-
+/* >>> Ajuste para o botão Login dentro da navbar <<< */
+.navbar .btn-success {
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 /* Card imagem */
 .card-img-top {
@@ -39,6 +50,28 @@
     text-align: center;
     color: #333;
 }
+
+/* Conteúdo principal */
+.main-content {
+    padding: 30px 15px;
+}
+
+.main-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #008844; /* verde */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.main-paragraph {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
 
 /* Footer */
 .footer {
@@ -149,8 +182,17 @@ form button:hover {
     .img-logo {
         width: 25% !important;
         height: 25% !important;
-
     }
 }
 
-@media (min-width: 576px) {}
+/* >>> Ajuste extra: centralizar itens no hamburguer <<< */
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar .btn-success {
+        width: 100%;  /* botão ocupa largura total no menu hamburguer */
+        margin: 10px 0;
+    }
+}

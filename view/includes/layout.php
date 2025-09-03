@@ -14,32 +14,42 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid text-left">
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
 
-            <a class="navbar-brand img-logo" href=" ./home.php">
+    <!-- Logo -->
+    <a class="navbar-brand img-logo" href="./home.php">
+      <img src="./imagens/logo.png" class="img-fluid" alt="LG Jardinagem"/>
+    </a>
 
-                <img src="./imagens/logo.png" class="img-fluid" alt="LG Jardinagem"/>
-            </a>
-            <button class="navbar-toggler" style="background-color:#fff" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="./home.php">Página
-                            Inicial</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./serviços.php">Serviços</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./sobre.php">Sobre</a></li>
+    <!-- Botão hamburguer -->
+    <button class="navbar-toggler" style="background-color:#fff" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <!-- Itens do menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./home.php">Página Inicial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./serviços.php">Serviços</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./sobre.php">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a href="./login.php" class="btn btn-success ms-lg-3">Login</a>
+        </li>
+      </ul>
+    </div>
 
-            </div>
-            </ul>
-            <a href="./login.php" class="btn btn-success btn-left">Login</a>
+  </div>
+</nav>
 
-        </div>
-    </nav>
 
     <?php if (isset($mainContent))
         echo $mainContent; ?>
