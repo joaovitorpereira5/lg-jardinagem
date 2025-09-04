@@ -4,52 +4,54 @@ require_once __DIR__ . '/../Model/LoginModel.php';
 
 class LoginControll
 {
-    private $loginModel;
-    private $db;
+  private $loginModel;
+  private $db;
 
-    public function __construct()
+  public function __construct()
+  {
+    $this->loginModel = new LoginModel();
+    $this->db = new Database();
+
+  }
+
+
+  public function cadastrarCliente()
+  {
+    $conn = $this->db->getConnection();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $dados = [
+        'email' => $_POST['email'],
+        'senha' => $_POST['senha'],
+      ];
+      $resultado = $this->loginModel->cadastrarCliente($dados);
+
+      if (!$resultado) {
+        return ['success' => false, 'message' => 'Erro ao cadastrar cliente.'];
+      }
+      return ['success' => true, 'message' => 'Cliente cadastrado com sucesso.'];
+    }
+
+    
+
+  }
+
+    public function initSession()
     {
-        $this->loginModel = new LoginModel();
-        $this->db = new Database();
-
-    }
-
-    //public function validarLogin()
-    //{
-      //  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //    $email = $_POST['email'];
-          //  $senha = $_POST['senha'];
-            //$LoginModel = new LoginModel();
-            //$LoginModel->initSession();
-            //$LoginModel->logar($email, $senha);
-            //if ($_SESSION['cliente_logado'] == true) {
-
-
-              //  header('Location: cliente/dashboard.php');
-                //exit;
-           // } else {
-             //   $erro = "E-mail ou senha incorretos!";
-           // }
-        //}
-    //}
-
-    public function cadastrarCliente(){
-         $conn = $this->db->getConnection();
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $dados =[
-                'email' => $_POST['email'],
-                'senha' => $_POST['senha'],
-            ];
-            $resultado = $this->loginModel->cadastrarCliente($dados);
-            if (!$resultado){
-                return ['success' => false, 'message' => 'Erro ao cadastrar cliente.'];
-            }
-            return ['success' => true, 'message' => 'Cliente cadastrado com sucesso.'];
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
-
-        
+        if(isset($_SESSION["msnLoginError"])) {
+          echo '<div class="alert alert-error">' . $_SESSION["msnLoginError"] . '</div>';
+            unset($_SESSION["msnLoginError"]);
+        }
+        if(isset($_SESSION["msnLoginSuccess"])) {
+          echo '<div class="alert alert-success">' . $_SESSION["msnLoginSuccess"] . '</div>';
+            unset($_SESSION["msnLoginSuccess"]);
+        }
     }
-    
-    
+
+   
+
+
 
 }

@@ -26,20 +26,20 @@ Class Cadastro {
         return $this->senha;
     }
 
-     public function testarConexao() {
-        $conn = $this->db->getConnection();
+     //public function testarConexao() {
+       // $conn = $this->db->getConnection();
         
-        try {
+       // try {
             // Query simples para testar
-            $stmt = $conn->query("SELECT 1 as teste");
-            $resultado = $stmt->fetch();
+         //   $stmt = $conn->query("SELECT 1 as teste");
+         //   $resultado = $stmt->fetch();
             
-            return "Conexão funcionando! Resultado: " . $resultado['teste'];
+          //  return "Conexão funcionando! Resultado: " . $resultado['teste'];
             
-        } catch (PDOException $e) {
-            return "Erro na conexão: " . $e->getMessage();
-        }
-    }
+        //} catch (PDOException $e) {
+         //   return "Erro na conexão: " . $e->getMessage();
+       // }
+    //}
 	
 
 }

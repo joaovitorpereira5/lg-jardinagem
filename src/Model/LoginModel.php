@@ -44,9 +44,9 @@ class LoginModel
     {
         $conn = $this->db->getConnection();
         $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
-        $stmt = $conn->prepare("INSERT INTO `admin` (email, senha_hash) VALUES (:email, :senha_hash)");
+        $stmt = $conn->prepare("INSERT INTO `admin` (email, senha) VALUES (:email, :senha_hash)");
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha_hash', $senha_hash);
+        $stmt->bindParam(':senha_hash', $senha);
         return $stmt->execute();
     }
 
@@ -54,25 +54,52 @@ class LoginModel
     {
         try {
             if (empty($dados['email']) || empty($dados['senha'])) {
-                throw new InvalidArgumentException("Email e senha são obrigatórios.");
+                $_SESSION["msnLoginError"] = "Email e senha são obrigatórios.";
+                header('Location: ../../view/login.php');
+                exit;
+
             }
+
             if (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
-                throw new InvalidArgumentException("Email inválido.");
+                $_SESSION["msnLoginError"] = "Email inválido.";
+                header('Location: ../../view/login.php');
+                exit;
+
+
             }
+
             if (strlen($dados['senha']) < 6) {
-                throw new InvalidArgumentException("A senha deve ter pelo menos 6 caracteres.");
+                $_SESSION["msnLoginError"] = "A senha deve ter pelo menos 6 caracteres.";
+
+
+
+                header('Location: ../../view/login.php');
+                exit;
             }
+
             $emailExiste = $this->verificarEmailExistente($dados['email']);
             if ($emailExiste) {
-                throw new Exception("Email já cadastrado.");
+                $_SESSION["msnLoginError"] = "Email já cadastrado.";
+                header('Location: ../view/login.php');
+                exit;
             }
+
+
+
+            // if (empty($_SESSION["msnLoginError"])) {}
+
             $senha_hash = password_hash($dados['senha'], PASSWORD_DEFAULT);
-            $sql = "INSERT INTO usuarios ( email, senha_hash) VALUES (:email,:senha_hash)";
+            $sql = "INSERT INTO usuarios ( email, senha) VALUES (:email,:senha_hash)";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->bindParam(':email', $dados['email']);
             $stmt->bindParam(':senha_hash', $senha_hash);
-            return $stmt->execute();
-        }catch (PDOException $e) {
+            if ($stmt->execute()) {
+                $_SESSION["msnLoginSuccess"] = "Cadastro realizado com sucesso!";
+                header("Location: ../../view/login.php");
+                exit();
+            }
+            ;
+        } catch (PDOException $e) {
             error_log("Erro PDO no cadastro: " . $e->getMessage());
             return [
                 'success' => false,

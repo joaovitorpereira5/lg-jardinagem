@@ -1,31 +1,7 @@
 <?php
-session_start();
-require_once __DIR__ . '/../src/Model/Database.php';
-require_once __DIR__ . '/../src/Model/LoginModel.php';
-require_once __DIR__ . '/../src/Controll/LoginControll.php';
-$login = new LoginModel();
-
-$loginControll = new LoginControll();
-$loginControll->cadastrarCliente();
-
-
-
-$erro = '';
-
-//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //  $email = $_POST['email'];
-    //$senha = $_POST['senha'];
-//
-  //  $login->logar($email, $senha);
-    //if ($_SESSION['cliente_logado'] == true) {
-
-
-      //  header('Location: cliente/dashboard.php');
-        //exit;
-    //} else {
-    //    $erro = "E-mail ou senha incorretos!";
-    //}
-//}
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $mainContent = '
 <div class="container my-5">
@@ -34,8 +10,8 @@ $mainContent = '
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="mb-4 text-success fw-bold text-center">Login do Cliente</h2>
-                    ' . (!empty($erro) ? '<div class="alert alert-danger text-center">' . $erro . '</div>' : '') . '
-                    <form method="POST" >
+                    ' . (!empty($_SESSION["msnLoginError"]) ? '<div class="alert alert-danger text-center">' . $_SESSION["msnLoginError"] . '</div>' : '') . '
+                    <form method="POST" action="../src/routes/LoginRoutes.php"> 
                         <input type="email" name="email" class="form-control mb-3" placeholder="E-mail" required>
                         <input type="password" name="senha" class="form-control mb-3" placeholder="Senha" required>
                         <button type="submit" class="btn btn-success w-100">Entrar</button>
