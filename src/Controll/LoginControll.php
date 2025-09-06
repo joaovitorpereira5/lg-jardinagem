@@ -1,16 +1,19 @@
 <?php
 require_once __DIR__ . '/../Model/Database.php';
 require_once __DIR__ . '/../Model/LoginModel.php';
+require_once __DIR__ . '/../Model/Administrador.php';
 
 class LoginControll
 {
   private $loginModel;
   private $db;
+  private $administrador;
 
   public function __construct()
   {
     $this->loginModel = new LoginModel();
     $this->db = new Database();
+    $this->administrador = new Administrador();
 
   }
 
@@ -26,31 +29,58 @@ class LoginControll
       $resultado = $this->loginModel->cadastrarCliente($dados);
 
       if (!$resultado) {
-        return ['success' => false, 'message' => 'Erro ao cadastrar cliente.'];
+        return ['success' => false];
       }
-      return ['success' => true, 'message' => 'Cliente cadastrado com sucesso.'];
+      return ['success' => true];
     }
-
-    
 
   }
 
-    public function initSession()
-    {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        if(isset($_SESSION["msnLoginError"])) {
-          echo '<div class="alert alert-error">' . $_SESSION["msnLoginError"] . '</div>';
-            unset($_SESSION["msnLoginError"]);
-        }
-        if(isset($_SESSION["msnLoginSuccess"])) {
-          echo '<div class="alert alert-success">' . $_SESSION["msnLoginSuccess"] . '</div>';
-            unset($_SESSION["msnLoginSuccess"]);
-        }
-    }
+  public function fazerLogin()
+  {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $dados = [
+        'email' => $_POST['email'],
+        'senha' => $_POST['senha'],
+      ];
 
-   
+      if ($this->loginModel->cadastrarCliente($dados)){
+        if(isset($_SESSION['is_admin']) && $_SESSION['is_admin']){
+          header ("Location: ../../view/adminView.php");
+        }else{
+          header("Location: ../../cliente.php");
+        }
+        exit;
+      }else{
+        $_SESSION["msnLoginError"]= "Email ou senha inválidos!";
+        header("Location:../../login.php ");
+        exit;
+      }
+    }
+  }
+
+  public function isAdmin(){
+    if (session_status()===PHP_SESSION_NONE){
+      return isset ($_SESSION['is_admin']) && $_SESSION['is_admin']===true;
+    }
+  }
+
+  public function initSession()
+  {
+    if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+    }
+    if (isset($_SESSION["msnLoginError"])) {
+      echo '<div class="alert alert-error">' . $_SESSION["msnLoginError"] . '</div>';
+      unset($_SESSION["msnLoginError"]);
+    }
+    if (isset($_SESSION["msnLoginSuccess"])) {
+      echo '<div class="alert alert-success">' . $_SESSION["msnLoginSuccess"] . '</div>';
+      unset($_SESSION["msnLoginSuccess"]);
+    }
+  }
+
+
 
 
 

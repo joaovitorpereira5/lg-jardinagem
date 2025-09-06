@@ -3,7 +3,7 @@
 require_once __DIR__ . '/Database.php';
 class LoginModel
 {
-
+    private int $id;
     private string $email;
 
     private string $senha;
@@ -33,22 +33,12 @@ class LoginModel
     {
         return $this->senha;
     }
-
-    public function conecxao()
+    public function getId(): int
     {
-        $conn = $this->db->getConnection();
-
+        return $this->id;
     }
 
-    public function cadastrarAdimin($email, $senha)
-    {
-        $conn = $this->db->getConnection();
-        $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
-        $stmt = $conn->prepare("INSERT INTO `admin` (email, senha) VALUES (:email, :senha_hash)");
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha_hash', $senha);
-        return $stmt->execute();
-    }
+
 
     public function cadastrarCliente($dados)
     {
@@ -80,13 +70,13 @@ class LoginModel
             $emailExiste = $this->verificarEmailExistente($dados['email']);
             if ($emailExiste) {
                 $_SESSION["msnLoginError"] = "Email já cadastrado.";
-                header('Location: ../view/login.php');
+                header('Location: ../../view/login.php');
                 exit;
             }
 
 
 
-            // if (empty($_SESSION["msnLoginError"])) {}
+         
 
             $senha_hash = password_hash($dados['senha'], PASSWORD_DEFAULT);
             $sql = "INSERT INTO usuarios ( email, senha) VALUES (:email,:senha_hash)";
@@ -121,30 +111,16 @@ class LoginModel
         $stmt->execute();
         return $stmt->fetch() !== false;
     }
-
-    public function logar($email, $senha)
-    {
-        $this->initSession();
-        $_SESSION['cliente_logado'] = false;
-        $conn = $this->db->getConnection();
-        $stmt = $conn->prepare("SELECT * FROM `admin` WHERE email = :email");
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $admin = $stmt->fetch();
-
-        if ($admin && password_verify($senha, $admin['senha_hash'])) {
-            // Login bem-sucedido
-            $_SESSION['cliente_logado'] = true;
-            $_SESSION['cliente_id'] = $admin['id'];
-            return true;
-        } else {
-            // Falha no login
-            return false;
+     public function usuarioLogado(): bool{
+        if(session_status() === PHP_SESSION_NONE){
+            session_start();
         }
-
-
+        return isset($_SESSION['usuario']) && $_SESSION['usuario'] === true;
     }
 
+
+
+   
 
 
 }

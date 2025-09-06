@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION === null) {
+if ($_SESSION ) {
     session_start();
 }
 
@@ -7,28 +7,11 @@ require_once __DIR__ . '/../controll/LoginControll.php';
 
 $loginControll = new LoginControll();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION["msnLoginError"] = '';
-    extract($_POST);
-    if (!empty($email) && !empty($senha)) {
-        $response = $loginControll->cadastrarCliente();
-
-        if (empty($_SESSION["msnLoginError"])) {
-            header('Location: cliente/dashboard.php');
-            exit;
-        } else {
-            $erro = $response['message'];
-        }
-    } else {
-        $erro = 'Por favor, preencha todos os campos.';
+if(isset($_SESSION['usuario_logado']) && $_SESSION['usuario_logado']===true){
+    if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ===true){
+        header ("Location ../../adminView.php");
+    }else{
+        header ("Location: ../../cliente.php");
     }
-
-    if($_SERVER ['REQUEST_METHOD'] === 'POST') {
-        $dados = [
-          'email' => $_POST['email'],
-          'senha' => $_POST['senha'],
-        ];
-         
-    $Login->cadastrarCliente($dados);
-    }
+    exit;
 }
