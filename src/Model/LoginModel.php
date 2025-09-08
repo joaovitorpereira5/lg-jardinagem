@@ -22,6 +22,7 @@ class LoginModel
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        $_SESSION["msnLoginError"] = "";
     }
 
     public function getEmail(): string
@@ -43,6 +44,8 @@ class LoginModel
     public function cadastrarCliente($dados)
     {
         try {
+
+
             if (empty($dados['email']) || empty($dados['senha'])) {
                 $_SESSION["msnLoginError"] = "Email e senha são obrigatórios.";
                 header('Location: ../../view/login.php');
@@ -50,42 +53,26 @@ class LoginModel
 
             }
 
-            if (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
-                $_SESSION["msnLoginError"] = "Email inválido.";
-                header('Location: ../../view/login.php');
-                exit;
-
-
-            }
-
             if (strlen($dados['senha']) < 6) {
                 $_SESSION["msnLoginError"] = "A senha deve ter pelo menos 6 caracteres.";
-
-
-
-                header('Location: ../../view/login.php');
-                exit;
-            }
-
-            $emailExiste = $this->verificarEmailExistente($dados['email']);
-            if ($emailExiste) {
-                $_SESSION["msnLoginError"] = "Email já cadastrado.";
                 header('Location: ../../view/login.php');
                 exit;
             }
 
 
 
-         
 
-            $senha_hash = password_hash($dados['senha'], PASSWORD_DEFAULT);
+
+
+
+            $senha_hash = sha1($dados['senha']);
             $sql = "INSERT INTO usuarios ( email, senha) VALUES (:email,:senha_hash)";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->bindParam(':email', $dados['email']);
             $stmt->bindParam(':senha_hash', $senha_hash);
             if ($stmt->execute()) {
                 $_SESSION["msnLoginSuccess"] = "Cadastro realizado com sucesso!";
-                header("Location: ../../view/login.php");
+                header("Location: ../../view/cliente.php");
                 exit();
             }
             ;
@@ -103,24 +90,64 @@ class LoginModel
         }
 
     }
-    public function verificarEmailExistente($email)
+
+    public function validarLogin()
     {
-        $conn = $this->db->getConnection();
-        $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = :email");
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        return $stmt->fetch() !== false;
-    }
-     public function usuarioLogado(): bool{
-        if(session_status() === PHP_SESSION_NONE){
-            session_start();
+
+        $_SESSION["msnLoginError"] = "";
+        if (isset($_POST['email']) && isset($_POST['senha'])) {
+            $email = $_POST['email'];
+            $senha = $_POST['senha'];
+            $conn = $this->db->getConnection();
+
+            $stmt = $conn->prepare("SELECT usuarios.*,IFNULL(`admin`.id,0) administrador FROM usuarios LEFT join `admin` ON usuarios.id=`admin`.id_usuario where usuarios.email = :email");
+            $stmt->bindParam(':email', $email);
+
+            $stmt->execute();
+
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $senha_hash = sha1($senha);
+
+            if (
+                $user && $senha_hash == $user['senha']
+            ) {
+                $_SESSION['usuario'] = true;
+                if ($user['administrador'] != 0) {
+                    $_SESSION['adminLogado'] = true;
+                    header("Location: ../../view/adminView.php");
+                } else {
+                    $_SESSION['adminLogado'] = false;
+                    header("Location: ../../view/cliente.php");
+                }
+
+                exit;
+            } else {
+                $_SESSION["msnLoginError"] = "Email ou senha incorretos.";
+                header("Location: ../../view/login.php");
+                exit;
+            }
+
+        } else {
+            header("Location: ../../view/login.php");
+            exit;
         }
-        return isset($_SESSION['usuario']) && $_SESSION['usuario'] === true;
+    }
+    public function usuarioLogado()
+    {
+        if (!$this->usuarioLogado()) {
+            $this->initSession();
+            $_SESSION['msnLoginError'] = "Sessão expirada ou não autenticada";
+            header("Location: ../../view/login.php");
+        }
+        exit();
     }
 
 
 
-   
+
+
 
 
 }

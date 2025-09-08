@@ -1,3 +1,4 @@
+
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -9,15 +10,15 @@ $mainContent = '
         <div class="col-md-6 col-lg-5">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h2 class="mb-4 text-success fw-bold text-center">Login do Cliente</h2>
+                    <h2 class="mb-4 text-success fw-bold text-center">Criar Conta</h2>
                     ' . (!empty($_SESSION["msnLoginError"]) ? '<div class="alert alert-danger text-center">' . $_SESSION["msnLoginError"] . '</div>' : '') . '
                     <form method="POST" action="../src/routes/LoginRoutes.php"> 
                         <input type="email" name="email" class="form-control mb-3" placeholder="E-mail" required>
                         <input type="password" name="senha" class="form-control mb-3" placeholder="Senha" required>
-                        <input type="hidden" name="action" value="login">
                         <button type="submit" class="btn btn-success w-100">Entrar</button>
+                        <input type="hidden" name="action" value="cadastrar">
                     </form>
-                    <p><a class="link-offset-2 link-underline link-underline-opacity-10 w-100" href="novaConta.php">Criar conta</a></p>
+                    
                 </div>
             </div>
         </div>
