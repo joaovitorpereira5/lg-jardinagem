@@ -59,12 +59,6 @@ class LoginModel
                 exit;
             }
 
-
-
-
-
-
-
             $senha_hash = sha1($dados['senha']);
             $sql = "INSERT INTO usuarios ( email, senha) VALUES (:email,:senha_hash)";
             $stmt = $this->db->getConnection()->prepare($sql);

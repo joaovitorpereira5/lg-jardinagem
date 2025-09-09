@@ -21,7 +21,7 @@ $mainContent = '
                         - Adubação e correção de solo<br>
                         - Controle de pragas
                     </p>
-                    <a href="#" onclick="abrirWhatsApp()" class="btn btn-success">Saiba Mais</a>
+                    <a href="./login.php"  class="btn btn-success">Saiba Mais</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@ $mainContent = '
                         - Instalação de pedras decorativas<br>
                         - Projeto de caminhos e áreas de descanso
                     </p>
-                    <a href="#" onclick="abrirWhatsApp()" class="btn btn-success mt-4">Saiba Mais</a>
+                    <a href="./login.php" class="btn btn-success mt-4">Saiba Mais</a>
                 </div>
             </div>
         </div>

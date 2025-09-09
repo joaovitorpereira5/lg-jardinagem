@@ -47,11 +47,6 @@ class LoginControll
 
   }
 
-
- 
- 
- 
- 
   public function initSession()
   {
     if (session_status() === PHP_SESSION_NONE) {
@@ -67,9 +62,5 @@ class LoginControll
     }
   }
   
-
-
-
-
 
 }
