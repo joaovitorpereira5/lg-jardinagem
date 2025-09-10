@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../Model/Database.php';
 require_once __DIR__ . '/../Model/ServicosModel.php';
 
-session_start();
+
 
 
 class ServicoController
@@ -20,7 +20,6 @@ class ServicoController
     public function cadstrar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
             $nome = $_POST['nome'];
             $preco = $_POST['preco'];
             $descricao = $_POST['descricao'];
@@ -33,6 +32,25 @@ class ServicoController
             if (empty($preco) || !is_numeric($preco) || $preco <= 0) {
                 $_SESSION['mnsCadastroErro'] = "O preço do serviço deve ser um número maior que zero.";
             }
+        }
+    }
+
+        public function listar()
+    {
+        try {
+            return $this->servicoModel->listarServicos();
+             
+            
+        } catch (Exception $e) {
+            return [];
+            
+        }
+    }
+
+    public function initSession()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
     }
 
@@ -59,7 +77,7 @@ class ServicoController
 
     public function deletar($id)
     {
-        $servico = new ServicosModel(0, '', '');
+        $servico = new ServicosModel();
         $servico->deletarServico($id);
     }
 

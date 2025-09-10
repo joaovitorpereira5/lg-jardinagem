@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (isset($_GET['page']) && $_GET['page'] === 'servicos') {
+    $_SESSION['pathAdmin'] = __DIR__ . '/painelServicos.php';
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +31,7 @@
                 display: block !important;
                 transform: none !important;
                 visibility: visible !important;
-                background-color: #343a40;
+                background-color: #003519 ;
                 color: #fff;
             }
 
@@ -80,7 +84,7 @@
                     <a class="nav-link text-dark" href="#"><i class="fa fa-users me-2"></i>Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#"><i class="fa fa-briefcase me-2"></i>Serviços</a>
+                    <a class="nav-link text-dark" href="?page=servicos"><i class="fa fa-briefcase me-2"></i>Serviços</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#"><i class="fa fa-cog me-2"></i>Configurações</a>
@@ -106,7 +110,7 @@
                     <a class="nav-link text-white" href="#"><i class="fa fa-users me-2"></i>Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#"><i class="fa fa-briefcase me-2"></i>Serviços</a>
+                    <a class="nav-link text-white" href="?page=servicos"><i class="fa fa-briefcase me-2"></i>Serviços</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#"><i class="fa fa-cog me-2"></i>Configurações</a>
