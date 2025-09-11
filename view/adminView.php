@@ -3,6 +3,12 @@ session_start();
 if (isset($_GET['page']) && $_GET['page'] === 'servicos') {
     $_SESSION['pathAdmin'] = __DIR__ . '/painelServicos.php';
 }
+
+if(isset($_SESSION['admin_id'])===true && isset($_SESSION['admin_email'])===true){
+    unset($_SESSION['admin_id']);
+    unset($_SESSION['admin_email']);
+    header('Location: adminView.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +42,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'servicos') {
             }
 
             #main-content {
-                margin-left: 250px;
+                margin-left: 450px;
             }
 
             .sidebar-toggle-btn {

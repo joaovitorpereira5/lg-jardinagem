@@ -63,12 +63,10 @@ class ServicosModel
                 $_SESSION["msnServicoError"] = "Todos os campos são obrigatórios.";
 
                 
-            }
-            if ($stmt->execute()) {
-                $_SESSION["msnServicoSuccess"] = "Serviço cadastrado com sucesso.";
+            } $_SESSION["msnServicoSuccess"] = "Serviço cadastrado com sucesso.";
 
                 
-            }
+            
 
         } catch (PDOException $e) {
 
@@ -102,6 +100,14 @@ class ServicosModel
 
         }
     }
+
+    public function buscarPorId($id){
+        $stmt = $this->db->getConnection()->prepare("SELECT * FROM servicos WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function editarServico($id, $nome, $preco, $descricao)
     {
         try {
