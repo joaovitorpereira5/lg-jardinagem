@@ -8,7 +8,7 @@ class ServicosModel
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        
+
     }
     private int $id;
 
@@ -42,72 +42,88 @@ class ServicosModel
 
 
 
-    public function __construct(float $preco, string $descricao, string $nome )
+    public function __construct(string $nome = '', float $preco = 0.0, string $descricao = '')
     {
+        $this->nome = $nome;
         $this->preco = $preco;
         $this->descricao = $descricao;
-        $this->nome = $nome;
         $this->db = new Database();
     }
- 
-    public function cadstrarServico(){
-        try{
+
+    public function cadstrarServico()
+    {
+        try {
             $sql = "INSERT INTO servicos (nome, preco, descricao) VALUES (:nome, :preco, :descricao)";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':preco', $this->preco);
             $stmt->bindParam(':descricao', $this->descricao);
             $stmt->execute();
-            if(empty($this->nome) || empty($this->preco) || empty($this->descricao)){
-               $_SESSION["msnServicoError"] = "Todos os campos são obrigatórios.";
-            }
-            if($stmt->execute()){
-                $_SESSION["msnServicoSuccess"] = "Serviço cadastrado com sucesso.";
-            }
+            if (empty($this->nome) || empty($this->preco) || empty($this->descricao)) {
+                $_SESSION["msnServicoError"] = "Todos os campos são obrigatórios.";
+
+                
+            } $_SESSION["msnServicoSuccess"] = "Serviço cadastrado com sucesso.";
+
+                
             
-        }catch (PDOException $e) {
-            
+
+        } catch (PDOException $e) {
+
         }
     }
 
-    public function listarServicos(){
-        try{
-            $sql =" SELECT * FROM servicos ORDER BY nome";
+    public function listarServicos()
+    {
+        try {
+            $sql = " SELECT * FROM servicos ORDER BY nome";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }catch (PDOException $e) {
-            
+        } catch (PDOException $e) {
+
         }
     }
 
-    public function deletarServico($id){
-        try{
+    public function deletarServico($id)
+    {
+        try {
             $sql = "DELETE FROM servicos WHERE id = :id";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->bindParam(':id', $id);
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 $_SESSION["msnServicoSuccess"] = "Serviço deletado com sucesso.";
-            };
-            
-        }catch (PDOException $e) {
-            
+            }
+            ;
+
+        } catch (PDOException $e) {
+
         }
     }
-    public function editarServico($id, $nome, $preco, $descricao){
-        try{
+
+    public function buscarPorId($id){
+        $stmt = $this->db->getConnection()->prepare("SELECT * FROM servicos WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function editarServico($id, $nome, $preco, $descricao)
+    {
+        try {
             $sql = "UPDATE servicos SET nome = :nome, preco = :preco, descricao = :descricao WHERE id = :id";
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':preco', $preco);
             $stmt->bindParam(':descricao', $descricao);
-           if( $stmt->execute()){
+            if ($stmt->execute()) {
                 $_SESSION["msnServicoSuccess"] = "Serviço editado com sucesso.";
-           };
-            
-        }catch (PDOException $e) {
-            
+            }
+            ;
+
+        } catch (PDOException $e) {
+
         }
     }
 

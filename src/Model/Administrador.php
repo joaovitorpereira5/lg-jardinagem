@@ -18,7 +18,7 @@ class Administrador
         $this->db = new Database();
 
     }
-      public function initSession()
+    public function initSession()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -64,7 +64,7 @@ class Administrador
             $conn = $this->db->getConnection();
             $stmt = $conn->prepare("INSERT INTO admin (usuario_id, nivel_acesso) VALUES (:usuario_id");
             $stmt->bindParam(':usuario_id', $id_usuario, PDO::PARAM_INT);
-           
+
             return $stmt->execute();
 
         } catch (PDOException $e) {
@@ -103,25 +103,27 @@ class Administrador
         }
     }
 
-   public function adminLogado(){
-     if (!$this->adminLogado()) {
-        $this->initSession();
-        $_SESSION['msnLoginError'] = "Sessão expirada ou não autenticada";
-        header("Location: ../../view/login.php");}
+    public function adminLogado()
+    {
+        if (!$this->adminLogado()) {
+            $this->initSession();
+            $_SESSION['msnLoginError'] = "Sessão expirada ou não autenticada";
+            header("Location: ../../view/login.php");
+        }
         exit();
- }
-          public function criarSessaoAdmin($id_usuario, $email): bool
+    }
+    public function criarSessaoAdmin($id_usuario, $email): bool
     {
         try {
             $this->initSession();
-            
+
 
             $_SESSION['admin_id'] = $id_usuario;
             $_SESSION['admin_email'] = $email;
-           
+
             $_SESSION['adminLogado'] = true;
-            $_SESSION['usuarioLogado'] = true; 
-            
+            $_SESSION['usuarioLogado'] = true;
+
             return true;
         } catch (Exception $e) {
             error_log("Erro ao criar sessão admin: " . $e->getMessage());
@@ -129,14 +131,29 @@ class Administrador
         }
     }
 
-    
-   
-    
+
+
+
     public function redirecionarParaAdmin()
     {
         if ($this->AdminLogado()) {
             header("Location: ../../view/adminView.php");
             exit();
         }
+    }
+
+
+    public function logoutAdmin()
+    {
+        $this->initSession();
+        unset($_SESSION['admin_id']);
+        unset($_SESSION['admin_email']);
+        unset($_SESSION['admin_nivel']);
+        unset($_SESSION['admin_logado']);
+
+
+
+        header("Location: ../../view/login.php");
+        exit();
     }
 }

@@ -1,4 +1,14 @@
 <?php
+session_start();
+if (isset($_GET['page']) && $_GET['page'] === 'servicos') {
+    $_SESSION['pathAdmin'] = __DIR__ . '/painelServicos.php';
+}
+
+if(isset($_SESSION['admin_id'])===true && isset($_SESSION['admin_email'])===true){
+    unset($_SESSION['admin_id']);
+    unset($_SESSION['admin_email']);
+    header('Location: adminView.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,12 +37,12 @@
                 display: block !important;
                 transform: none !important;
                 visibility: visible !important;
-                background-color: #343a40;
+                background-color: #003519 ;
                 color: #fff;
             }
 
             #main-content {
-                margin-left: 250px;
+                margin-left: 450px;
             }
 
             .sidebar-toggle-btn {
@@ -80,7 +90,7 @@
                     <a class="nav-link text-dark" href="#"><i class="fa fa-users me-2"></i>Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#"><i class="fa fa-briefcase me-2"></i>Serviços</a>
+                    <a class="nav-link text-dark" href="?page=servicos"><i class="fa fa-briefcase me-2"></i>Serviços</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#"><i class="fa fa-cog me-2"></i>Configurações</a>
@@ -106,7 +116,7 @@
                     <a class="nav-link text-white" href="#"><i class="fa fa-users me-2"></i>Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#"><i class="fa fa-briefcase me-2"></i>Serviços</a>
+                    <a class="nav-link text-white" href="?page=servicos"><i class="fa fa-briefcase me-2"></i>Serviços</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#"><i class="fa fa-cog me-2"></i>Configurações</a>
