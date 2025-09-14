@@ -3,8 +3,11 @@
 /* Navbar personalizada */
 .navbar {
     background-color: #003519 !important;
+    display: flex;
+    align-items: center; /* centraliza verticalmente logo e links */
 }
 
+/* Links da navbar */
 .navbar .nav-link,
 .navbar .nav-link.active {
     color: #fff !important;
@@ -14,9 +17,18 @@
     color: #008844 !important;
 }
 
+/* Logo */
+.img-logo {
+    display: flex;
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center;
+    height: 60px; /* altura da navbar */
+    width: auto;
+}
+
 .img-logo img {
-    max-height: 60px; /* controla a altura da logo */
-    width: auto;      /* mantém a proporção */
+    max-height: 100%; /* ajusta à altura do container */
+    width: auto; /* mantém proporção */
 }
 
 /* Botão personalizado */
@@ -31,15 +43,14 @@
     background-color: #00aa55 !important;
 }
 
-/* >>> Ajuste para o botão Login dentro da navbar <<< */
+/* Botão login na navbar */
 .navbar .btn-success {
     padding: 6px 16px;
     border-radius: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px 0;
 }
 
-/* Card imagem */
+/* Cards de imagem */
 .card-img-top {
     height: 200px;
     object-fit: cover;
@@ -59,7 +70,7 @@
 .main-title {
     font-size: 28px;
     font-weight: 700;
-    color: #008844; /* verde */
+    color: #008844;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -71,7 +82,6 @@
     text-align: justify;
     margin-bottom: 15px;
 }
-
 
 /* Footer */
 .footer {
@@ -155,19 +165,8 @@ form button:hover {
     background-color: #00aa55 !important;
 }
 
-.img-logo {
-    width: 10% !important;
-    height: 10% !important;
-}
-
-.btn-left {
-    float: right !important;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
-    /* .navbar-brand img {height: 60px;}*/
-
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -180,19 +179,19 @@ form button:hover {
     }
 
     .img-logo {
-        width: 25% !important;
-        height: 25% !important;
+        width: auto;
+        height: 50px;
     }
 }
 
-/* >>> Ajuste extra: centralizar itens no hamburguer <<< */
+/* Centralizar itens no menu hamburguer */
 @media (max-width: 991px) {
     .navbar-nav {
         text-align: center;
     }
 
     .navbar .btn-success {
-        width: 100%;  /* botão ocupa largura total no menu hamburguer */
+        width: 100%;
         margin: 10px 0;
     }
 }
