@@ -30,7 +30,15 @@
                 <li class="nav-item"><a class="nav-link active" href="./home.php">Página Inicial</a></li>
                 <li class="nav-item"><a class="nav-link" href="./serviços.php">Serviços</a></li>
                 <li class="nav-item"><a class="nav-link" href="./sobre.php">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="./orçamento.php">Orçamento</a></li>
                 <li class="nav-item"><a href="./login.php" class="btn btn-success ms-lg-3">Login</a></li>
+                <!-- Coloque na sua navbar, por exemplo -->
+<form action="logout.php" method="post" class="d-inline">
+  <button type="submit" class="btn btn-danger btn-sm">
+    <i class="bi bi-box-arrow-right"></i> Sair
+  </button>
+</form>
+
               </ul>
             </div>
         </div>
