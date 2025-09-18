@@ -1,61 +1,65 @@
-/* Não sobrescreva .container, .row, .col diretamente */
+/* Estilos Gerais */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 /* Navbar personalizada */
-.navbar {
-    background-color: #003519 !important;
+nav.navbar {
+    background-color: #003519;
     display: flex;
-    align-items: center; /* centraliza verticalmente logo e links */
+    align-items: center;
+}
+
+/* Cor do botão "hambúrguer" (toggler) */
+.navbar-toggler {
+    background-color: #fff;
 }
 
 /* Links da navbar */
-.navbar .nav-link,
-.navbar .nav-link.active {
-    color: #fff !important;
+.navbar .nav-link {
+    color: #fff;
+    transition: color 0.3s;
 }
 
-.navbar .nav-link:hover {
-    color: #008844 !important;
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #008844;
 }
 
 /* Logo */
 .img-logo {
     display: flex;
-    align-items: center; /* centraliza verticalmente */
+    align-items: center;
     justify-content: center;
-    height: 60px; /* altura da navbar */
-    width: auto;
+    height: 60px;
 }
 
 .img-logo img {
-    max-height: 100%; /* ajusta à altura do container */
-    width: auto; /* mantém proporção */
+    max-height: 100%;
+    width: auto;
 }
 
-/* Botão personalizado */
+/* Botão de sucesso (Login) */
 .btn-success {
-    background-color: #008844 !important;
-    border: none !important;
+    background-color: #008844;
+    border: none;
     font-weight: bold;
     transition: background-color 0.3s;
-}
-
-.btn-success:hover {
-    background-color: #00aa55 !important;
-}
-
-/* Botão login na navbar */
-.navbar .btn-success {
     padding: 6px 16px;
     border-radius: 20px;
     margin: 5px 0;
 }
 
-/* Cards de imagem */
+.btn-success:hover {
+    background-color: #00aa55;
+}
+
+/* Cards */
 .card-img-top {
     height: 200px;
     object-fit: cover;
 }
 
-/* Card texto */
 .card-text {
     text-align: center;
     color: #333;
@@ -84,20 +88,15 @@
 
 /* Footer */
 .footer {
-    background-color: #003519 !important;
+    background-color: #003519;
     color: #fff;
-    padding: 5px 0;
-    text-align: center;
+    padding: 15px 0; /* Aumentei um pouco o padding */
     font-size: small;
-    margin-top: auto;
 }
 
 .footer img {
     height: 60px;
     margin-bottom: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .footer .redes a {
@@ -138,8 +137,9 @@
     color: #fff;
 }
 
-/* Formulário */
-form {
+/* Formulários de conteúdo (Login, Contato, etc.) */
+/* ATENÇÃO: Use a classe .form-card no seu <form> para aplicar este estilo */
+.form-card {
     max-width: 400px;
     margin: 30px auto;
     padding: 20px;
@@ -148,23 +148,43 @@ form {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-form .form-control {
+.form-card .form-control {
     border-radius: 5px;
     box-shadow: none;
 }
 
-form button {
-    background-color: #008844 !important;
-    border: none !important;
+.form-card button {
+    background-color: #008844;
+    border: none;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 
-form button:hover {
-    background-color: #00aa55 !important;
+.form-card button:hover {
+    background-color: #00aa55;
 }
 
 /* Responsividade */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0; /* Espaçamento no menu mobile */
+    }
+
+    .navbar .btn-success {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .navbar-nav form .btn {
+        justify-content: center; /* Centraliza o botão Sair no mobile */
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .whatsapp-float {
         width: 50px;
@@ -178,19 +198,6 @@ form button:hover {
     }
 
     .img-logo {
-        width: auto;
         height: 50px;
-    }
-}
-
-/* Centralizar itens no menu hamburguer */
-@media (max-width: 991px) {
-    .navbar-nav {
-        text-align: center;
-    }
-
-    .navbar .btn-success {
-        width: 100%;
-        margin: 10px 0;
     }
 }
