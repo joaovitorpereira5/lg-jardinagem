@@ -86,18 +86,6 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </footer>
 
-    <a href="#" onclick="abrirWhatsApp()" class="whatsapp-float" aria-label="Abrir conversa no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        function abrirWhatsApp() {
-            const numero = "5544998543350";
-            const mensagem = "Olá! Quero informações sobre os serviços da LG Jardinagem.";
-            const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-            window.open(link, '_blank');
-        }
-    </script>
  </body>
 
 </html>

@@ -39,7 +39,7 @@ $mainContent = '
                 </p>
             </div>
             <div class="text-center mt-4">
-                <a href="#" onclick="abrirWhatsApp()" class="btn btn-success btn-lg mb-4">Faça seu Orçamento Agora!</a>
+                <a href="orcamento.php" class="btn btn-success btn-lg mb-4">Faça seu Orçamento Agora!</a>
             </div>
         </div>
     </div>

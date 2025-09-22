@@ -40,11 +40,14 @@ class LoginModel
     }
 
 
+    
+            
+
 
     public function cadastrarCliente($dados)
     {
         try {
-
+            
 
             if (empty($dados['email']) || empty($dados['senha'])) {
                 $_SESSION["msnLoginError"] = "Email e senha são obrigatórios.";

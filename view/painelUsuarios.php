@@ -37,6 +37,8 @@ if (session_status() === PHP_SESSION_NONE) {
     </form>
 </div>
 
+<br><br><br>
+
 
  <div class="card">
      <div class="card-header">

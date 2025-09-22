@@ -1,5 +1,4 @@
 <?php
-// painelOrcamentos.php - VERSÃO COM BOTÃO DE EXCLUIR
 
 include_once __DIR__ . '/Database.php';
 
@@ -11,6 +10,7 @@ $stmtOrcamentos = $conn->prepare($sqlOrcamentos);
 $stmtOrcamentos->execute();
 $orcamentos = $stmtOrcamentos->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 <h1 class="mt-4">Orçamentos Recebidos</h1>
 

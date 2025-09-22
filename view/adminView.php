@@ -10,7 +10,7 @@ switch ($page) {
         break;
         
     case 'orcamentos':
-        $_SESSION['pathAdmin'] = __DIR__ . '/orcamentos.php';
+        $_SESSION['pathAdmin'] = __DIR__ . '/painelOrcamentos.php';
         break;
 
           case 'usuarios':
