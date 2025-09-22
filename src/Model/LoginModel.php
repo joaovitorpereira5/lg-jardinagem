@@ -69,7 +69,7 @@ class LoginModel
             $stmt->bindParam(':senha_hash', $senha_hash);
             if ($stmt->execute()) {
                 $_SESSION["msnLoginSuccess"] = "Cadastro realizado com sucesso!";
-                header("Location: ../../view/cliente.php");
+                header("Location: ../../view/home.php");
                 exit();
             }
             ;

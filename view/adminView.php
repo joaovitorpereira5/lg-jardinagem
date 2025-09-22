@@ -115,7 +115,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
                     <a class="nav-link text-dark" href="home.php"><i class="fa-solid fa-left-long"> Voltar</i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="?page=dashboard"><i class="fa fa-home me-2"></i>Dashboard</a>
+                    <a class="nav-link text-dark" href="?page=dashboard"><i class="fa fa-home me-2"></i>Inicial</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="?page=orcamentos"><i
@@ -145,7 +145,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
             <li class="nav-item">
                 <a class="nav-link " href="home.php"><i class="fa-solid fa-left-long"></i> Voltar</a>
             </li>
-            <a class="nav-link" href="?page=dashboard"><i class="fa fa-home"></i> Dashboard</a>
+            <a class="nav-link" href="?page=dashboard"><i class="fa fa-home"></i>Inicial</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?page=orcamentos"><i class="fa fa-file-invoice-dollar"></i> Orçamentos</a>
