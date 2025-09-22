@@ -5,6 +5,12 @@
 // Inicia a sessão para usar a variável de usuário logado
 session_start();
 
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] !== true) {
+    header("Location: login.php"); // Redireciona para a página de login
+    exit;
+}
+
 // Inclui a classe de conexão com o banco de dados
 include_once __DIR__ . '/../src/model/Database.php';
 
@@ -33,7 +39,8 @@ ob_start();
 ?>
 
 <div class="container my-5">
-    <div class="row g-5"> <div class="col-lg-8">
+    <div class="row g-5">
+        <div class="col-lg-8">
             <h2 class="text-center text-success fw-bold mb-4">Monte seu Orçamento</h2>
 
             <?php foreach($servicos as $categoria => $itens): ?>
@@ -43,9 +50,7 @@ ob_start();
                         <div class="col-md-6">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body d-flex flex-column">
-
                                     <h5 class="card-title text-success text-center"><?= htmlspecialchars($s['nome']) ?></h5>
-                                    
                                     <p class="card-text flex-grow-1"><?= htmlspecialchars($s['descricao']) ?></p>
                                     <p class="fw-bold">R$ <?= number_format($s['preco'], 2, ',', '.') ?></p>
                                     <button 
@@ -87,9 +92,8 @@ ob_start();
                 </form>
             </div>
         </div>
-        </div>
+    </div>
 </div>
-
 
 <script>
 let total = 0;

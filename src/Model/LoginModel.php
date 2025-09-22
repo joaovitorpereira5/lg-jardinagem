@@ -113,7 +113,7 @@ class LoginModel
                     header("Location: ../../view/adminView.php");
                 } else {
                     $_SESSION['adminLogado'] = false;
-                    header("Location: ../../view/cliente.php");
+                    header("Location: ../../view/home.php");
                 }
 
                 exit;
