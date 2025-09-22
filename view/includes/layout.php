@@ -25,9 +25,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand img-logo" href="./home.php">
-                <img src="./imagens/logo.png" class="img-fluid" alt="LG Jardinagem"/>
+                <img src="./imagens/logo.png" class="img-fluid" alt="LG Jardinagem" />
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li class="nav-item"><a class="nav-link" href="./sobre.php">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="./orcamento.php">Orçamento</a></li>
 
-                    <?php if (isset($_SESSION['usuario_logado'])): ?>
+                    <?php if (isset($_SESSION['usuario'])): ?>
                         <li class="nav-item">
                             <form action="./logout.php" method="post" class="d-flex">
                                 <button type="submit" class="btn text-danger d-flex align-items-center">
@@ -51,22 +52,35 @@ if (session_status() === PHP_SESSION_NONE) {
                             <a href="./login.php" class="btn btn-success ms-lg-3">Login</a>
                         </li>
                     <?php endif; ?>
+                      <?php 
+                        if(!empty($_SESSION['usuario']) && $_SESSION['usuario'] === true && !empty($_SESSION['adminLogado']) && $_SESSION['adminLogado'] === true):?>
+                            <li class="nav-item">
+                                  
+                            <a href="./adminView.php" class="btn btn-success ms-lg-3">Painel</a>
+                        
+                           </li>
+                        <?php endif; ?>
+                       
                 </ul>
             </div>
         </div>
     </nav>
 
     <main class="flex-grow-1">
-        <?php if (isset($mainContent)) echo $mainContent; ?>
+        <?php if (isset($mainContent))
+            echo $mainContent; ?>
     </main>
 
     <footer class="footer mt-auto">
         <div class="container text-center">
             <img src="./imagens/logo.png" class="img-fluid" alt="LG Jardinagem" />
             <div class="redes">
-                <a href="https://www.facebook.com/jardins.encontrocomapazinterior" aria-label="Link para o Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/oseias_pereira_vieira" aria-label="Link para o Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" onclick="abrirWhatsApp()" aria-label="Link para o WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/jardins.encontrocomapazinterior" aria-label="Link para o Facebook"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/oseias_pereira_vieira" aria-label="Link para o Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" onclick="abrirWhatsApp()" aria-label="Link para o WhatsApp"><i
+                        class="fab fa-whatsapp"></i></a>
             </div>
             <p>&copy; <?= date('Y') ?> LG Jardinagem. Todos os direitos reservados.</p>
         </div>
@@ -84,5 +98,6 @@ if (session_status() === PHP_SESSION_NONE) {
             window.open(link, '_blank');
         }
     </script>
-</body>
+ </body>
+
 </html>

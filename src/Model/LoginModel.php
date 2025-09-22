@@ -138,6 +138,14 @@ class LoginModel
         exit();
     }
 
+    public function listarUsuarios()
+    {
+        $conn = $this->db->getConnection();
+        $stmt = $conn->prepare("SELECT * FROM usuarios");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
 

@@ -36,6 +36,15 @@ class LoginControll
     }
 
   }
+  public function usuariosListados()
+  {
+    return $this->loginModel->listarUsuarios();
+  }
+
+  public function listarAmins()
+  {
+    return $this->administrador->listarAdmins();
+  }
 
   public function fazerLogin()
   {
@@ -45,6 +54,31 @@ class LoginControll
       $this->loginModel->validarLogin();
     }
 
+  }
+
+  public function fazerLogout()
+  {
+    if(session_status() === PHP_SESSION_NONE){
+      session_start();
+    }
+    if(isset($_GET['logout']) && $_GET['logout'] === 'true'){
+      unset($_SESSION['user_id']);
+      unset($_SESSION['user_email']);
+      unset($_SESSION['adminLogado']);
+      session_destroy();
+      header('Location: ../../view/login.php');
+      exit;
+    }
+
+    
+  }
+
+  public function processarLogout(){
+    $this->initSession();
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../../view/login.php");
+    exit();
   }
 
   public function initSession()
