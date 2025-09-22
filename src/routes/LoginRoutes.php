@@ -35,7 +35,9 @@ if (!empty($_POST['action']) && $_POST['action'] === 'listarUsuarios') {
     exit;
 }
 if (!empty($_POST['action']) && $_POST['action'] === 'listarAdmins') {
-    $admins = $loginControll->listarAmins();
+    $admins = $loginControll->listarAdmins();
+    
+    
     $_SESSION['listarAdmins'] = $admins;
     header('location: ../../view/adminView.php?page=usuarios');
     exit;

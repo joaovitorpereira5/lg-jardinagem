@@ -12,6 +12,7 @@ $stmtOrcamentos->execute();
 $orcamentos = $stmtOrcamentos->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+
 <h1 class="mt-4">Orçamentos Recebidos</h1>
 
 <?php if (empty($orcamentos)): ?>

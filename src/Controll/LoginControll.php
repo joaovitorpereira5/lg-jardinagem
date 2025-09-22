@@ -41,9 +41,11 @@ class LoginControll
     return $this->loginModel->listarUsuarios();
   }
 
-  public function listarAmins()
+  public function listarAdmins()
   {
     return $this->administrador->listarAdmins();
+
+    
   }
 
   public function fazerLogin()
@@ -58,10 +60,10 @@ class LoginControll
 
   public function fazerLogout()
   {
-    if(session_status() === PHP_SESSION_NONE){
+    if (session_status() === PHP_SESSION_NONE) {
       session_start();
     }
-    if(isset($_GET['logout']) && $_GET['logout'] === 'true'){
+    if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
       unset($_SESSION['user_id']);
       unset($_SESSION['user_email']);
       unset($_SESSION['adminLogado']);
@@ -70,10 +72,11 @@ class LoginControll
       exit;
     }
 
-    
+
   }
 
-  public function processarLogout(){
+  public function processarLogout()
+  {
     $this->initSession();
     $_SESSION = array();
     session_destroy();
@@ -95,6 +98,6 @@ class LoginControll
       unset($_SESSION["msnLoginSuccess"]);
     }
   }
-  
+
 
 }

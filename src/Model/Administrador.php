@@ -34,15 +34,8 @@ class Administrador
             return false;
         }
     }
-    
 
 
-
-    
-    public function verificarLogin()
-    {
-        
-    }
 
 
     public function removerAdmin($id_usuario): bool
@@ -69,18 +62,19 @@ class Administrador
     {
         try {
             $conn = $this->db->getConnection();
-            $stmt = $conn->prepare("SELECT * FROM 'admin'");
+            $stmt = $conn->prepare("SELECT * FROM `admin` AS a INNER JOIN usuarios AS u ON a.id_usuario=u.id");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            return [];
+            return ['error', $e];
         }
     }
 
     public function adminLogado()
-    {   $this->initSession();
+    {
+        $this->initSession();
         if (!isset($_SESSION['adminLogado']) || $_SESSION['adminLogado'] !== true) {
-            
+
 
             $_SESSION['msnLoginError'] = "Sessão expirada ou não autenticada";
             header("Location: ../../view/login.php");
@@ -102,36 +96,36 @@ class Administrador
         }
     }
 
-    
 
 
 
 
 
 
-   /* public function redirecionarParaAdmin()
-    {
-        if ($this->adminLogado()) {
-            header("Location: ../../view/adminView.php");
-            exit();
-        }
-    }
+
+    /* public function redirecionarParaAdmin()
+     {
+         if ($this->adminLogado()) {
+             header("Location: ../../view/adminView.php");
+             exit();
+         }
+     }
 
 
-    public function logoutAdmin()
-    {
-        $this->initSession();
-        unset($_SESSION['admin_id']);
-        unset($_SESSION['admin_email']);
-        unset($_SESSION['admin_nivel']);
-        unset($_SESSION['admin_logado']);
-        unset($_SESSION['adminLogado']);
-        session_destroy();
+     public function logoutAdmin()
+     {
+         $this->initSession();
+         unset($_SESSION['admin_id']);
+         unset($_SESSION['admin_email']);
+         unset($_SESSION['admin_nivel']);
+         unset($_SESSION['admin_logado']);
+         unset($_SESSION['adminLogado']);
+         session_destroy();
 
 
-        header("Location: ../../view/login.php");
-        exit();
->>>>>>> 0bf1314 (att)
-    }
-    */
+         header("Location: ../../view/login.php");
+         exit();
+ >>>>>>> 0bf1314 (att)
+     }
+     */
 }
